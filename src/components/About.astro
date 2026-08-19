@@ -1,0 +1,296 @@
+---
+import { Image } from 'astro:assets';
+import hotelImage from '../assets/images/flat.webp';
+---
+
+<section class="relative w-full bg-[#fdf9f1] py-10 sm:py-14 lg:py-16 overflow-hidden">
+
+  <!-- Background Glow Accents -->
+  <div class="absolute top-0 right-0 w-80 h-80 bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#2a1744]/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Expanded Full-Width Dark Luxury Card Container -->
+    <div class="w-full bg-[#1c0c30] text-white rounded-3xl p-6 sm:p-9 lg:p-12 shadow-2xl border border-white/10 relative overflow-hidden">
+
+      <!-- Subtle Decorative Background Watermark -->
+      <div class="absolute -top-24 -right-24 w-80 h-80 bg-[#D4A373]/10 rounded-full filter blur-2xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center relative z-10">
+
+        <!-- Left Column -->
+        <div class="lg:col-span-7 space-y-4 text-left">
+
+          <!-- Eyebrow -->
+          <div class="inline-flex items-center gap-2 bg-[#D4A373]/15 border border-[#D4A373]/40 px-3.5 py-1.5 rounded-full">
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="text-[#D4A373]"
+            >
+              <path
+                d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"
+                fill="currentColor"
+              />
+            </svg>
+
+            <span class="text-[#D4A373] text-[9.5px] sm:text-[10.5px] font-bold tracking-[0.2em] uppercase">
+              YOUR COMFORTABLE STAY IN BEYPORE
+            </span>
+          </div>
+
+          <!-- Main Heading -->
+          <h2
+            class="text-3xl sm:text-4xl lg:text-[42px] font-serif font-bold tracking-tight text-white leading-[1.12]"
+            style="font-family: 'Cormorant Garamond', serif;"
+          >
+            Welcome to
+            <span class="text-[#D4A373] italic font-normal">
+              Delta Suites
+            </span>
+          </h2>
+
+          <!-- Gold Accent Line -->
+          <div class="flex items-center gap-2.5 py-0.5">
+            <div class="w-10 h-[1px] bg-[#D4A373]/60"></div>
+            <div class="w-1.5 h-1.5 rotate-45 bg-[#D4A373]"></div>
+            <div class="w-10 h-[1px] bg-[#D4A373]/60"></div>
+          </div>
+
+          <!-- Narrative Text -->
+          <div class="text-white/80 text-xs sm:text-sm leading-relaxed space-y-2 font-normal max-w-xl">
+
+            <p>
+              <strong class="text-white font-semibold">
+                Delta Suites
+              </strong>
+              is a premium 31-room hotel in Beypore, Kozhikode, created for guests looking for
+              <span class="text-[#D4A373] font-medium">
+                comfort, convenience
+              </span>
+              and a
+              <span class="text-[#D4A373] font-medium">
+                relaxing stay
+              </span>.
+            </p>
+
+            <p>
+              Whether you are travelling with family, visiting Kozhikode for business, planning a weekend getaway or exploring the attractions of Beypore,
+              <strong class="text-white font-semibold">
+                Delta Suites
+              </strong>
+              offers a comfortable base with
+              <span class="text-[#D4A373] font-medium">
+                modern amenities
+              </span>
+              and attentive hospitality.
+            </p>
+
+          </div>
+
+          <!-- Feature Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1.5">
+
+            <!-- Rooms -->
+            <div class="bg-white/5 border border-white/10 rounded-xl p-2.5 flex flex-col items-center text-center backdrop-blur-xs hover:border-[#D4A373]/60 transition-all duration-300">
+
+              <div class="w-7 h-7 rounded-full bg-[#D4A373]/20 text-[#D4A373] flex items-center justify-center mb-1">
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h5m-5 0V9m0 0h-2m2 0h2"
+                  />
+                </svg>
+              </div>
+
+              <div
+                class="text-[#D4A373] text-sm font-bold font-serif"
+                style="font-family: 'Cormorant Garamond', serif;"
+              >
+                31
+              </div>
+
+              <div class="text-[8.5px] font-bold text-white/70 uppercase tracking-wider">
+                ROOMS
+              </div>
+
+            </div>
+
+            <!-- Pool & Gym -->
+            <div class="bg-white/5 border border-white/10 rounded-xl p-2.5 flex flex-col items-center text-center backdrop-blur-xs hover:border-[#D4A373]/60 transition-all duration-300">
+
+              <div class="w-7 h-7 rounded-full bg-[#D4A373]/20 text-[#D4A373] flex items-center justify-center mb-1">
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                  />
+                </svg>
+              </div>
+
+              <div class="text-[#D4A373] text-[10.5px] font-bold uppercase tracking-wider">
+                POOL &
+              </div>
+
+              <div class="text-[8.5px] font-bold text-white/70 uppercase tracking-wider">
+                GYM
+              </div>
+
+            </div>
+
+            <!-- Dining -->
+            <div class="bg-white/5 border border-white/10 rounded-xl p-2.5 flex flex-col items-center text-center backdrop-blur-xs hover:border-[#D4A373]/60 transition-all duration-300">
+
+              <div class="w-7 h-7 rounded-full bg-[#D4A373]/20 text-[#D4A373] flex items-center justify-center mb-1">
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </div>
+
+              <div class="text-[#D4A373] text-[10.5px] font-bold uppercase tracking-wider">
+                DINING
+              </div>
+
+              <div class="text-[8.5px] font-bold text-white/70 uppercase tracking-wider">
+                FACILITIES
+              </div>
+
+            </div>
+
+            <!-- Location -->
+            <div class="bg-white/5 border border-white/10 rounded-xl p-2.5 flex flex-col items-center text-center backdrop-blur-xs hover:border-[#D4A373]/60 transition-all duration-300">
+
+              <div class="w-7 h-7 rounded-full bg-[#D4A373]/20 text-[#D4A373] flex items-center justify-center mb-1">
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                </svg>
+              </div>
+
+              <div class="text-[#D4A373] text-[10.5px] font-bold uppercase tracking-wider">
+                HEART OF
+              </div>
+
+              <div class="text-[8.5px] font-bold text-white/70 uppercase tracking-wider">
+                BEYPORE
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- CTA -->
+          <div class="pt-2">
+            <a
+              href="#"
+              class="inline-flex items-center gap-3 bg-[#D4A373] text-[#1c0c30] px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-bold tracking-wider text-[10.5px] uppercase shadow-lg shadow-[#D4A373]/20 group"
+            >
+              <span>DISCOVER DELTA SUITES</span>
+
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="stroke-[#1c0c30] transform group-hover:translate-x-1 transition-transform duration-300"
+              >
+                <path
+                  d="M5 12h14M12 5l7 7-7 7"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Hotel Image -->
+        <div class="lg:col-span-5 relative">
+
+          <div class="relative w-full h-[300px] sm:h-[340px] lg:h-[370px] rounded-2xl overflow-hidden border border-white/20 shadow-2xl group">
+
+            <Image
+              src={hotelImage}
+              alt="Delta Suites Hotel External View"
+              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+
+            <div class="absolute inset-0 bg-gradient-to-t from-[#1c0c30]/85 via-transparent to-transparent"></div>
+
+            <!-- Floating Overlay Badge -->
+            <div class="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 text-white flex items-center justify-between">
+
+              <div>
+                <div class="text-[8.5px] font-bold text-[#D4A373] tracking-widest uppercase">
+                  DELTA SUITES
+                </div>
+
+                <div class="text-xs font-semibold">
+                  Beypore, Kozhikode
+                </div>
+              </div>
+
+              <div class="text-xs font-bold text-[#D4A373] bg-black/40 px-2.5 py-1 rounded-full border border-[#D4A373]/40">
+                ★ 4.8
+                <span class="text-[8.5px] text-white/70 font-normal">
+                  (120+)
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+</style>
