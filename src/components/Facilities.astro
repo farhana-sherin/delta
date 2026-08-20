@@ -1,4 +1,6 @@
 ---
+const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
+
 const services = [
   {
     id: "wifi",
@@ -105,10 +107,12 @@ const services = [
         <!-- CTA Pill Button -->
         <div>
           <a 
-            href="#contact" 
-            class="inline-flex items-center gap-2.5 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-7 rounded-full transition-all duration-300 shadow-md hover:shadow-xl group"
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-7 rounded-full transition-all duration-300 shadow-md hover:shadow-xl group cursor-pointer"
           >
-            <span>CALL TO RESERVE YOUR STAY</span>
+            <span>RESERVE YOUR STAY</span>
             <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>

@@ -4,7 +4,7 @@
  * Exact match to user reference screenshot, with a slightly larger left image height.
  */
 import { Image } from 'astro:assets';
-import banquetImg from '../assets/images/06_banquet_hall.png';
+import banquetImg from '../assets/images/06_banquet_hall.webp';
 
 const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
 
@@ -146,36 +146,30 @@ const gridFeatures = [
 
     </div>
 
-    <!-- BOTTOM FULL-WIDTH DARK BANNER -->
-    <div class="w-full bg-[#16062b] text-white rounded-[24px] p-5 sm:px-7 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg border border-[#16062b]">
+    <!-- BOTTOM CALLOUT STATEMENT (NO BOX, BIG CAPITAL LETTERS) -->
+    <div class="mt-10 sm:mt-14 pt-8 border-t border-[#e8ded0] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
       
-      <!-- Left Side: Icon + Text -->
-      <div class="flex items-center gap-4">
-        <div class="w-11 h-11 rounded-xl bg-white/10 border border-white/15 text-[#D4A373] flex items-center justify-center shrink-0">
-          <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-          </svg>
-        </div>
-
-        <div>
-          <h3 class="text-sm sm:text-base font-serif font-bold text-white leading-tight" style="font-family: 'Cormorant Garamond', serif;">
-            The ideal setting for every occasion.
-          </h3>
-          <p class="text-white/70 text-xs font-light">
-            Conferences, seminars, celebrations — we make it memorable.
-          </p>
-        </div>
+      <!-- Text Stack -->
+      <div class="space-y-1 max-w-2xl">
+        <span class="text-[#b8860b] text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase block">
+          VERSATILE VENUES & HOSPITALITY
+        </span>
+        
+        <h3 class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-[#1c0c30] tracking-wider uppercase leading-tight" style="font-family: 'Cormorant Garamond', serif;">
+          THE IDEAL SETTING FOR EVERY OCCASION
+        </h3>
+        
+        <p class="text-[#554960] text-xs sm:text-sm font-normal leading-relaxed">
+          Conferences, seminars, celebrations — we make it memorable.
+        </p>
       </div>
 
-      <!-- Vertical Separator (Desktop) -->
-      <div class="hidden lg:block w-[1px] h-8 bg-white/15"></div>
-
-      <!-- Right Side: Gold CTA Button -->
+      <!-- Right Side: CTA Button -->
       <a 
         href={BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="group w-full sm:w-auto bg-[#b8860b] hover:bg-[#D4A373] text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-7 rounded-xl transition-all duration-300 shadow-md inline-flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+        class="group bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-3.5 px-8 sm:px-9 rounded-full transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 inline-flex items-center justify-center gap-2.5 shrink-0 cursor-pointer border border-[#1c0c30] hover:border-[#b8860b]"
       >
         <span>EXPLORE OUR SPACES</span>
         <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">

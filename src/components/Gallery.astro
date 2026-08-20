@@ -2,18 +2,18 @@
 import { Image } from 'astro:assets';
 
 // Asset imports
-import galleryProperty from '../assets/images/gallery_property.png';
-import galleryLobby from '../assets/images/gallery_lobby.png';
-import galleryExterior from '../assets/images/gallery_exterior.png';
-import galleryFood from '../assets/images/gallery_food.png';
-import roomPresidential from '../assets/images/room_presidential.png';
-import roomDeluxe from '../assets/images/room_deluxe.png';
-import poolImg from '../assets/images/04_pool.png';
-import kidsPoolImg from '../assets/images/kids_pool.png';
-import restaurantImg from '../assets/images/03_restaurant.png';
-import gymImg from '../assets/images/05_fitness.png';
-import diningBreakfast from '../assets/images/dining_breakfast.png';
-import familyTimeImg from '../assets/images/family_time.png';
+import galleryProperty from '../assets/images/gallery_property.webp';
+import galleryLobby from '../assets/images/gallery_lobby.webp';
+import galleryExterior from '../assets/images/gallery_exterior.webp';
+import galleryFood from '../assets/images/gallery_food.webp';
+import roomPresidential from '../assets/images/room_presidential.webp';
+import roomDeluxe from '../assets/images/room_deluxe.webp';
+import poolImg from '../assets/images/04_pool.webp';
+import kidsPoolImg from '../assets/images/kids_pool.webp';
+import restaurantImg from '../assets/images/03_restaurant.webp';
+import gymImg from '../assets/images/05_fitness.webp';
+import diningBreakfast from '../assets/images/dining_breakfast.webp';
+import familyTimeImg from '../assets/images/family_time.webp';
 
 const categories = [
   { id: 'all', label: 'All' },
@@ -263,7 +263,7 @@ const galleryItems = [
   <!-- LIGHTBOX / EXPANDABLE IMAGE MODAL -->
   <div
     id="galleryLightbox"
-    class="fixed inset-0 z-50 bg-[#0e0618]/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 lg:p-10 opacity-0 pointer-events-none transition-all duration-300 select-none"
+    class="fixed inset-0 z-50 bg-black/40 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 lg:p-10 opacity-0 pointer-events-none transition-all duration-300 select-none"
     role="dialog"
     aria-modal="true"
     aria-label="Image Lightbox"
@@ -273,7 +273,7 @@ const galleryItems = [
       id="closeLightbox"
       type="button"
       aria-label="Close Lightbox"
-      class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-[#b8860b] text-white flex items-center justify-center border border-white/20 transition-all duration-300 cursor-pointer shadow-lg hover:scale-105"
+      class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 w-11 h-11 rounded-full bg-[#1c0c30]/80 backdrop-blur-md hover:bg-[#b8860b] text-white flex items-center justify-center border border-white/20 transition-all duration-300 cursor-pointer shadow-xl hover:scale-105"
     >
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -285,7 +285,7 @@ const galleryItems = [
       id="lightboxPrev"
       type="button"
       aria-label="Previous Image"
-      class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/10 hover:bg-[#b8860b] text-white flex items-center justify-center border border-white/20 transition-all duration-300 cursor-pointer shadow-lg hover:scale-110"
+      class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#1c0c30]/80 backdrop-blur-md hover:bg-[#b8860b] text-white flex items-center justify-center border border-white/20 transition-all duration-300 cursor-pointer shadow-xl hover:scale-110"
     >
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -297,7 +297,7 @@ const galleryItems = [
       id="lightboxNext"
       type="button"
       aria-label="Next Image"
-      class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/10 hover:bg-[#b8860b] text-white flex items-center justify-center border border-white/20 transition-all duration-300 cursor-pointer shadow-lg hover:scale-110"
+      class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#1c0c30]/80 backdrop-blur-md hover:bg-[#b8860b] text-white flex items-center justify-center border border-white/20 transition-all duration-300 cursor-pointer shadow-xl hover:scale-110"
     >
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -310,24 +310,24 @@ const galleryItems = [
       class="max-w-5xl w-full flex flex-col items-center justify-center relative transform scale-95 transition-all duration-300 my-auto"
     >
       <!-- Image Display Frame -->
-      <div class="relative max-h-[72vh] w-full flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-black/40">
+      <div class="relative max-h-[72vh] flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl bg-transparent">
         <img
           id="lightboxImage"
           src=""
           alt=""
-          class="max-h-[72vh] max-w-full object-contain transition-all duration-300"
+          class="max-h-[72vh] max-w-full object-contain rounded-2xl transition-all duration-300 shadow-2xl border border-white/20"
         />
 
         <!-- Top Counter & Category Floating Bar -->
         <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
           <span
             id="lightboxCategory"
-            class="bg-[#1c0c30]/80 backdrop-blur-md text-[#D4A373] border border-[#D4A373]/40 text-[10px] sm:text-xs font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase"
+            class="bg-[#1c0c30]/90 backdrop-blur-md text-[#D4A373] border border-[#D4A373]/40 text-[10px] sm:text-xs font-bold tracking-widest px-3.5 py-1.5 rounded-full uppercase shadow-lg"
           ></span>
 
           <span
             id="lightboxCounter"
-            class="bg-black/60 backdrop-blur-md text-white/90 border border-white/20 text-[10px] sm:text-xs font-semibold px-3 py-1.5 rounded-full tracking-wider"
+            class="bg-[#1c0c30]/90 backdrop-blur-md text-white border border-white/20 text-[10px] sm:text-xs font-semibold px-3 py-1.5 rounded-full tracking-wider shadow-lg"
           ></span>
         </div>
       </div>
@@ -336,12 +336,12 @@ const galleryItems = [
       <div class="mt-4 w-full text-center px-4">
         <h3
           id="lightboxTitle"
-          class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white tracking-tight leading-tight mb-1"
+          class="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white drop-shadow-md tracking-tight leading-tight mb-1"
           style="font-family: 'Cormorant Garamond', serif;"
         ></h3>
         <p
           id="lightboxDesc"
-          class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto font-normal leading-relaxed"
+          class="text-xs sm:text-sm text-white/90 drop-shadow-sm max-w-xl mx-auto font-normal leading-relaxed"
         ></p>
       </div>
 

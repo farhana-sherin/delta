@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
-import luxuryRoomImg from '../assets/images/02_room.png';
+import luxuryRoomImg from '../assets/images/02_room.webp';
+
+const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
 
 const whyStayReasons = [
   {
@@ -108,8 +110,10 @@ const whyStayReasons = [
 
           <!-- CTA Pill Button -->
           <a 
-            href="#contact" 
-            class="inline-flex items-center gap-2 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-[10px] uppercase tracking-[0.18em] py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-lg group"
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-[10px] uppercase tracking-[0.18em] py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-lg group cursor-pointer"
           >
             <span>RESERVE YOUR SUITE</span>
             <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">

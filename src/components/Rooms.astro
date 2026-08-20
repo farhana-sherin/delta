@@ -1,8 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import roomDeluxe from '../assets/images/room_deluxe.png';
-import roomExecutive from '../assets/images/room_executive.png';
-import roomFamily from '../assets/images/room_family.png';
+import roomDeluxe from '../assets/images/room_deluxe.webp';
+import roomExecutive from '../assets/images/room_executive.webp';
+import roomFamily from '../assets/images/room_family.webp';
+
+const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
 
 const roomCategories = [
   {
@@ -193,10 +195,10 @@ const roomCategories = [
 
   </div>
 
-  <!-- Seamless Scrollbar-Free Modal for Room Amenities (KEPT EXACTLY AS IT IS) -->
+  <!-- Seamless Scrollbar-Free Modal for Room Amenities -->
   <div 
     id="roomModal" 
-    class="fixed inset-0 z-50 bg-[#0e0618]/70 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300"
     role="dialog"
     aria-modal="true"
     aria-labelledby="modalRoomName"
@@ -257,9 +259,11 @@ const roomCategories = [
         </button>
 
         <a 
-          href="#contact" 
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer" 
           id="modalBookBtn"
-          class="bg-[#1c0c30] hover:bg-[#b8860b] text-white px-6 py-2 rounded-xl font-bold text-[11px] uppercase tracking-wider transition-colors shadow-sm text-center inline-block"
+          class="bg-[#1c0c30] hover:bg-[#b8860b] text-white px-6 py-2 rounded-xl font-bold text-[11px] uppercase tracking-wider transition-colors shadow-sm text-center inline-block cursor-pointer"
         >
           BOOK NOW
         </a>
