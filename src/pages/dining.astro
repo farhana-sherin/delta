@@ -1,0 +1,283 @@
+---
+/**
+ * Dining & Culinary Page - Delta Suites Beypore
+ * Premium, custom luxury layout featuring high-resolution showcases of Malabar gastronomy,
+ * all-day dining, breakfast buffets, and private suite dining.
+ */
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import PlanYourStay from '../components/PlanYourStay.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import restaurantImg from '../assets/images/03_restaurant.png';
+import breakfastImg from '../assets/images/dining_breakfast.png';
+import foodImg from '../assets/images/gallery_food.png';
+import inroomImg from '../assets/images/dining_inroom.png';
+import ambienceImg from '../assets/images/06_banquet_hall.png';
+
+const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
+
+const diningExperiences = [
+  {
+    num: "01",
+    tag: "SIGNATURE VENUE",
+    title: "All-Day Restaurant",
+    subtitle: "Authentic Malabar & International Flavors",
+    description: "Immerse your senses in Kozhikode's celebrated culinary culture. Our main restaurant serves traditional Kerala curries, fresh Beypore harbor seafood, and multi-cuisine delights in a peaceful, air-conditioned setting.",
+    image: restaurantImg,
+    hours: "7:00 AM – 10:30 PM",
+    highlights: ["Harbor-Fresh Seafood", "Authentic Spice Blends", "Air-Conditioned Comfort", "Family & Group Seating"]
+  },
+  {
+    num: "02",
+    tag: "MORNING RITUAL",
+    title: "Wholesome Buffet Breakfast",
+    subtitle: "Start Your Day with Comfort",
+    description: "Begin each morning with a lavish buffet spread. Enjoy hot appams with vegetable stew, live dosa preparations, seasonal tropical fruits, pastries, and authentic Kerala filter coffee brewed to perfection.",
+    image: breakfastImg,
+    hours: "7:30 AM – 10:30 AM",
+    highlights: ["Live Dosa & Appam Station", "Kerala Filter Coffee", "Fresh Fruit Juices", "Continental Selection"]
+  },
+  {
+    num: "03",
+    tag: "CHEF'S SPECIAL",
+    title: "Malabar Heritage Feast",
+    subtitle: "Rich Culinary Tradition of Kozhikode",
+    description: "Kozhikode is world-famous for its food heritage. Our master chefs prepare signature Kozhikode biriyani, coconut-infused gravies, and traditional banana leaf lunches crafted with passion.",
+    image: foodImg,
+    hours: "Lunch & Dinner Specials",
+    highlights: ["Kozhikode Biriyani", "Banana Leaf Feast", "Artisanal Malabar Parotta", "Traditional Desserts"]
+  },
+  {
+    num: "04",
+    tag: "IN-SUITE PRIVACY",
+    title: "24/7 In-Room Dining",
+    subtitle: "Gourmet Meals Delivered to Your Door",
+    description: "Enjoy peaceful private meals inside your suite. Whether it's a late-night snack after a long trip or a quiet breakfast in bed, our room service delivers freshly cooked dishes around the clock.",
+    image: inroomImg,
+    hours: "Available 24 Hours",
+    highlights: ["Prompt Doorstep Delivery", "Late Night Menu Options", "In-Bed Breakfast Service", "Private Suite Dining"]
+  }
+];
+
+const promises = [
+  { title: "Harbor Freshness", desc: "Seafood and produce sourced fresh daily from Beypore harbor." },
+  { title: "Pure Malabar Spices", desc: "Hand-ground spices crafted following age-old Kozhikode recipes." },
+  { title: "Uncompromising Hygiene", desc: "Pristine kitchen standards ensuring total peace of mind." },
+  { title: "Dietary Customization", desc: "Vegetarian, Jain, and special dietary needs prepared on request." }
+];
+---
+
+<Layout title="Dining & Malabar Cuisine | Delta Suites Beypore">
+  <Header isSolid={true} />
+
+  <main class="bg-[#fcf9f4] text-[#1c0c30]">
+    
+    <!-- 1. GRAND HERO HEADER SECTION -->
+    <section class="relative bg-[#120524] text-white pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden border-b border-white/10">
+      
+      <!-- Ambient Glow Effects -->
+      <div class="absolute top-1/3 left-1/4 w-[32rem] h-[32rem] bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-[1340px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Column Text -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            
+            <!-- Category Tag -->
+            <div class="inline-flex items-center gap-3 bg-white/5 border border-[#D4A373]/30 backdrop-blur-md px-4 py-1.5 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#D4A373]"></span>
+              <span class="text-[#D4A373] text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">
+                FINE DINING & MALABAR GASTRONOMY
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-4xl sm:text-6xl font-serif font-bold tracking-tight text-white leading-tight" style="font-family: 'Cormorant Garamond', serif;">
+              Savor the Culinary<br />
+              <span class="text-[#D4A373]">Heritage of Beypore</span>
+            </h1>
+
+            <p class="text-white/80 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Delta Suites brings you a refined dining experience celebrating Kozhikode's legendary food culture. From wholesome buffet breakfasts to authentic seafood curries, every meal is prepared with warmth and precision.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto bg-[#b8860b] hover:bg-[#D4A373] text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-8 rounded-full transition-all duration-300 shadow-md inline-flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>BOOK YOUR STAY & DINING</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+
+              <a 
+                href="#dining-highlights"
+                class="w-full sm:w-auto bg-white/5 hover:bg-white text-white hover:text-[#120524] border border-white/20 font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-7 rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>EXPLORE OFFERINGS</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Column Hero Image Frame -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative w-full aspect-[4/3] rounded-[32px] overflow-hidden border border-white/20 shadow-2xl bg-white/5 group">
+              <Image 
+                src={restaurantImg} 
+                alt="Delta Suites Restaurant Dining" 
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                loading="eager" 
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#120524]/80 via-transparent to-transparent"></div>
+              
+              <div class="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-white/40 shadow-lg text-[#1c0c30]">
+                <span class="text-[10px] font-bold text-[#b8860b] uppercase tracking-wider block">DELTA RESTAURANT</span>
+                <span class="text-sm font-serif font-bold block" style="font-family: 'Cormorant Garamond', serif;">
+                  Open Daily for Breakfast, Lunch & Dinner
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. ALTERNATING CULINARY SHOWCASE GRID -->
+    <section id="dining-highlights" class="py-20 sm:py-28">
+      <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
+        
+        <!-- Section Sub-header -->
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase block">
+            OUR CULINARY OFFERINGS
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-bold text-[#1c0c30]" style="font-family: 'Cormorant Garamond', serif;">
+            Tailored Dining Experiences
+          </h2>
+          <div class="flex items-center justify-center gap-3 pt-1">
+            <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+            <span class="text-[#D4A373]">✦</span>
+            <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+          </div>
+        </div>
+
+        {diningExperiences.map((exp, index) => (
+          <div class={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
+            index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+          }`}>
+            
+            <!-- Image Frame (6 cols) -->
+            <div class={`lg:col-span-6 relative ${index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}>
+              <div class="relative w-full aspect-[16/11] rounded-[28px] overflow-hidden border border-[#e8ded0] shadow-lg group bg-[#1c0c30]/5">
+                <Image 
+                  src={exp.image} 
+                  alt={exp.title} 
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                  loading="lazy" 
+                />
+
+                <!-- Floating Number Accent Badge -->
+                <div class="absolute top-5 left-5 w-12 h-12 rounded-full bg-[#1c0c30] text-[#D4A373] font-serif font-bold text-xl flex items-center justify-center shadow-md border border-[#D4A373]/30" style="font-family: 'Cormorant Garamond', serif;">
+                  {exp.num}
+                </div>
+
+                <!-- Hours Badge -->
+                <div class="absolute bottom-5 right-5 bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl border border-[#e8ded0] text-xs font-semibold text-[#1c0c30] shadow-sm">
+                  🕒 {exp.hours}
+                </div>
+              </div>
+            </div>
+
+            <!-- Content Stack (6 cols) -->
+            <div class={`lg:col-span-6 space-y-4 ${index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}`}>
+              
+              <span class="text-[10px] font-bold text-[#b8860b] uppercase tracking-[0.2em] bg-[#FAF5ED] border border-[#e8ded0] px-3.5 py-1.5 rounded-full inline-block">
+                {exp.tag}
+              </span>
+
+              <h3 class="text-3xl sm:text-4xl font-serif font-bold text-[#1c0c30] leading-snug" style="font-family: 'Cormorant Garamond', serif;">
+                {exp.title}
+              </h3>
+
+              <p class="text-[#b8860b] text-xs sm:text-sm font-serif italic font-medium">
+                {exp.subtitle}
+              </p>
+
+              <p class="text-[#554960] text-xs sm:text-sm leading-relaxed font-normal">
+                {exp.description}
+              </p>
+
+              <!-- Highlight Chips -->
+              <div class="pt-2">
+                <span class="text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider block mb-2">
+                  Key Features:
+                </span>
+                <div class="flex flex-wrap gap-2">
+                  {exp.highlights.map(hl => (
+                    <span class="bg-[#FAF5ED] text-[#554960] text-[11px] font-medium px-3 py-1 rounded-full border border-[#e8ded0] inline-flex items-center gap-1.5">
+                      <span class="text-[#b8860b] text-[8px]">✦</span>
+                      <span>{hl}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        ))}
+
+      </div>
+    </section>
+
+    <!-- 3. CULINARY PROMISES 4-COLUMN CARDS -->
+    <section class="py-16 bg-[#FAF5ED] border-t border-b border-[#e8ded0]">
+      <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <div class="text-center max-w-xl mx-auto space-y-1">
+          <span class="text-[10px] font-bold text-[#b8860b] uppercase tracking-[0.2em]">OUR COMMITMENT TO GUESTS</span>
+          <h3 class="text-2xl sm:text-4xl font-serif font-bold text-[#1c0c30]" style="font-family: 'Cormorant Garamond', serif;">
+            Why Dine With Us
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
+          {promises.map(item => (
+            <div class="bg-white p-6 rounded-2xl border border-[#e8ded0] shadow-xs space-y-2 text-center">
+              <div class="w-10 h-10 rounded-full bg-[#1c0c30] text-[#D4A373] flex items-center justify-center mx-auto text-sm font-bold shadow-xs">
+                ✦
+              </div>
+              <h4 class="text-base font-bold text-[#1c0c30] font-serif" style="font-family: 'Cormorant Garamond', serif;">
+                {item.title}
+              </h4>
+              <p class="text-xs text-[#554960] font-normal leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <PlanYourStay />
+  <Footer />
+</Layout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&display=swap');
+</style>

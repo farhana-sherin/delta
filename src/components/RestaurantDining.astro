@@ -1,0 +1,135 @@
+---
+/**
+ * Restaurant & Dining Section - Delta Suites
+ * Minimalist luxury presentation featuring all 6 dining services
+ * with clean card imagery, titles, and descriptions.
+ */
+import { Image } from 'astro:assets';
+import restaurantImg from '../assets/images/03_restaurant.png';
+import breakfastImg from '../assets/images/dining_breakfast.png';
+import foodImg from '../assets/images/gallery_food.png';
+import loungeImg from '../assets/images/gallery_lobby.png';
+import inroomImg from '../assets/images/dining_inroom.png';
+import ambienceImg from '../assets/images/06_banquet_hall.png';
+
+const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
+
+const diningServices = [
+  {
+    id: "all-day-restaurant",
+    title: "All-Day Restaurant",
+    description: "A comfortable dining space serving meals throughout the day.",
+    image: restaurantImg
+  },
+  {
+    id: "buffet-breakfast",
+    title: "Buffet Breakfast Included",
+    description: "A wholesome breakfast spread to start your day with ease.",
+    image: breakfastImg
+  },
+  {
+    id: "daily-housekeeping",
+    title: "Daily Housekeeping",
+    description: "Carefully prepared dishes featuring local and international options.",
+    image: foodImg
+  },
+  {
+    id: "lounge-bar",
+    title: "Lounge & Bar",
+    description: "A relaxed setting for drinks, light snacks, and casual conversations.",
+    image: loungeImg
+  },
+  {
+    id: "in-room-dining",
+    title: "In-Room Dining",
+    description: "Room service is available during designated hours for added convenience.",
+    image: inroomImg
+  },
+  {
+    id: "comfortable-ambience",
+    title: "Comfortable Dining Ambience",
+    description: "A calm, well-maintained space designed for relaxed meals.",
+    image: ambienceImg
+  }
+];
+---
+
+<section id="restaurant-dining" class="relative w-full bg-[#FAF7F3] text-[#1c0c30] py-18 sm:py-28 border-t border-[#e8ded0] overflow-hidden">
+  
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute top-1/4 right-1/3 w-96 h-96 bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1340px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Title & Subheading -->
+    <div class="text-center space-y-3 mb-14 sm:mb-18">
+      <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase block">
+        CULINARY SERVICES
+      </span>
+
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-[#1c0c30]" style="font-family: 'Cormorant Garamond', serif;">
+        Restaurant & Dining
+      </h2>
+
+      <!-- Subtle Accent Divider Line -->
+      <div class="flex items-center justify-center gap-2.5 pt-1">
+        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+        <div class="w-1.5 h-1.5 rotate-45 bg-[#D4A373]"></div>
+        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+      </div>
+    </div>
+
+    <!-- MINIMALIST 3x2 CARD GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 items-stretch mb-14 sm:mb-18">
+      {diningServices.map((item) => (
+        <div class="group bg-white rounded-[28px] p-6 sm:p-7 border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(212,163,115,0.15)] hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden cursor-pointer">
+          
+          <div>
+            <!-- Clean Card Image -->
+            <div class="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden bg-[#1c0c30]/5 mb-5 border border-[#e8ded0]/60 shadow-2xs">
+              <Image 
+                src={item.image} 
+                alt={item.title} 
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out" 
+                loading="lazy" 
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1c0c30]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            <!-- Title & Description -->
+            <div class="space-y-2">
+              <h3 class="text-xl sm:text-2xl font-serif font-bold text-[#1c0c30] group-hover:text-[#b8860b] transition-colors leading-snug" style="font-family: 'Cormorant Garamond', serif;">
+                {item.title}
+              </h3>
+
+              <p class="text-[#554960] text-xs sm:text-sm font-normal leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Centered Minimal CTA Button: BOOK YOUR STAY -->
+    <div class="flex justify-center">
+      <a 
+        href={BOOKING_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-4 px-10 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-3 cursor-pointer"
+      >
+        <span>BOOK YOUR STAY</span>
+        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&display=swap');
+</style>

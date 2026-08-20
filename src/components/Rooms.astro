@@ -1,0 +1,362 @@
+---
+import { Image } from 'astro:assets';
+import roomDeluxe from '../assets/images/room_deluxe.png';
+import roomExecutive from '../assets/images/room_executive.png';
+import roomFamily from '../assets/images/room_family.png';
+
+const roomCategories = [
+  {
+    id: "deluxe-room",
+    name: "Deluxe Room",
+    eyebrow: "BEYPORE HAVEN",
+    shortDesc: "A comfortable and contemporary room designed for a relaxing stay in Beypore.",
+    image: roomDeluxe,
+    amenities: [
+      "King/Queen bed",
+      "Air conditioning",
+      "Smart/LED TV",
+      "Wi-Fi",
+      "Tea & coffee facilities",
+      "Wardrobe",
+      "Work desk",
+      "Attached bathroom",
+      "Hot & cold water",
+      "Toiletries"
+    ]
+  },
+  {
+    id: "executive-room",
+    name: "Executive Room",
+    eyebrow: "PREMIUM SUITE",
+    shortDesc: "An upgraded spacious haven featuring contemporary interiors and premium hospitality.",
+    image: roomExecutive,
+    amenities: [
+      "King size bed",
+      "Air conditioning",
+      "55\" Smart/LED TV",
+      "High-speed Wi-Fi",
+      "Espresso & coffee facilities",
+      "Spacious wardrobe",
+      "Ergonomic work desk",
+      "Attached luxury bathroom",
+      "Hot & cold water",
+      "Premium toiletries"
+    ]
+  },
+  {
+    id: "family-suite",
+    name: "Family Suite",
+    eyebrow: "FAMILY SUITE",
+    shortDesc: "Generously sized suite with twin bedding tailored for comfortable family getaways in Beypore.",
+    image: roomFamily,
+    amenities: [
+      "Twin Queen beds",
+      "Air conditioning",
+      "55\" Smart/LED TV",
+      "High-speed Wi-Fi",
+      "Tea & coffee facilities",
+      "Double wardrobe",
+      "Seating lounge & desk",
+      "Attached family bathroom",
+      "Hot & cold water",
+      "Complimentary toiletries"
+    ]
+  }
+];
+---
+
+<section id="rooms" class="relative w-full bg-[#fdf9f1] py-16 sm:py-24 overflow-hidden">
+  
+  <!-- Ambient Gold Accents -->
+  <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 left-1/4 w-80 h-80 bg-[#1c0c30]/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-xl mx-auto text-center mb-12 sm:mb-16 flex flex-col items-center">
+      <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase mb-2">
+        STAY YOUR WAY
+      </span>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-[#1c0c30] font-serif font-bold tracking-tight mb-3" style="font-family: 'Cormorant Garamond', serif;">
+        Rooms & Suites
+      </h2>
+
+      <div class="flex items-center gap-2 justify-center mb-3">
+        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+        <div class="w-1.5 h-1.5 rotate-45 bg-[#D4A373]"></div>
+        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+      </div>
+
+      <p class="text-[#554960] text-xs sm:text-sm font-normal leading-relaxed">
+        Serene comfort and contemporary luxury designed for a memorable stay in Beypore.
+      </p>
+    </div>
+
+    <!-- ROOM CARDS MATCHING REFERENCE UI LAYOUT -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-[1400px] mx-auto">
+      {roomCategories.map((room) => (
+        <div 
+          data-room-card
+          data-room-id={room.id}
+          data-room-name={room.name}
+          data-room-desc={room.shortDesc}
+          data-room-amenities={JSON.stringify(room.amenities)}
+          data-room-image={room.image.src}
+          class="group bg-white rounded-[32px] p-6 sm:p-7 border border-[#e8ded0] shadow-[0_8px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(212,163,115,0.2)] hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden relative cursor-pointer"
+        >
+          <div>
+            <!-- Top Image Showcase -->
+            <div class="relative w-full aspect-[4/3] rounded-[22px] overflow-hidden bg-[#1c0c30]/5 mb-5 border border-[#e8ded0]/60 shadow-xs">
+              <Image 
+                src={room.image} 
+                alt={room.name} 
+                class="w-full h-full object-cover transform group-hover:scale-106 transition-transform duration-500 ease-out" 
+                loading="lazy" 
+              />
+              
+              <!-- Top Right Floating Pill Badge -->
+              <div class="absolute top-3.5 right-3.5 bg-white/95 backdrop-blur-md text-[#b8860b] text-[10px] font-bold tracking-wider px-3.5 py-1.5 rounded-full uppercase flex items-center gap-1.5 border border-[#e8ded0] shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b] animate-pulse"></span>
+                <span>{room.eyebrow}</span>
+              </div>
+
+              <!-- Vignette Gradient at Image Bottom -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1c0c30]/30 via-transparent to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-500 pointer-events-none"></div>
+            </div>
+          </div>
+
+          <!-- Bottom Footer Info Stack & Actions -->
+          <div class="space-y-4">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-start gap-3.5">
+                <!-- Circular Emblem Icon -->
+                <div class="w-12 h-12 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#b8860b] group-hover:border-[#b8860b] group-hover:bg-[#1c0c30] group-hover:text-white flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 shadow-xs">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>
+                </div>
+
+                <!-- Text Stack -->
+                <div class="space-y-1">
+                  <h3 class="text-[#1c0c30] group-hover:text-[#b8860b] text-lg sm:text-xl font-serif font-bold leading-tight transition-colors" style="font-family: 'Cormorant Garamond', serif;">
+                    {room.name}
+                  </h3>
+
+                  <p class="text-[#554960] text-xs sm:text-sm leading-relaxed font-normal">
+                    {room.shortDesc}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Right 6-dot Grid Icon -->
+              <div class="text-gray-300 group-hover:text-[#b8860b] transition-colors pt-1 shrink-0">
+                <svg class="w-6 h-6 opacity-70" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="8" cy="8" r="1.5"/>
+                  <circle cx="16" cy="8" r="1.5"/>
+                  <circle cx="8" cy="12" r="1.5"/>
+                  <circle cx="16" cy="12" r="1.5"/>
+                  <circle cx="8" cy="16" r="1.5"/>
+                  <circle cx="16" cy="16" r="1.5"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Action Buttons Bar: VIEW ROOM | BOOK NOW -->
+            <div class="flex items-center gap-2.5 pt-3 border-t border-[#e8ded0]/60">
+              <button 
+                type="button" 
+                data-action="view-room"
+                class="flex-1 bg-white hover:bg-[#1c0c30] text-[#1c0c30] hover:text-white border border-[#1c0c30] font-bold text-[11px] uppercase tracking-wider py-3 px-3 rounded-xl transition-all duration-300 text-center cursor-pointer shadow-xs flex items-center justify-center gap-1.5 group/btn"
+              >
+                <span>VIEW ROOM</span>
+                <svg class="w-3 h-3 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <a 
+                href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 bg-[#1c0c30] hover:bg-[#b8860b] text-white border border-[#1c0c30] hover:border-[#b8860b] font-bold text-[11px] uppercase tracking-wider py-3 px-3 rounded-xl transition-all duration-300 text-center cursor-pointer shadow-xs hover:shadow-md inline-flex items-center justify-center gap-1"
+              >
+                BOOK NOW
+              </a>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- Seamless Scrollbar-Free Modal for Room Amenities (KEPT EXACTLY AS IT IS) -->
+  <div 
+    id="roomModal" 
+    class="fixed inset-0 z-50 bg-[#0e0618]/70 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalRoomName"
+  >
+    <div 
+      id="roomModalContent" 
+      class="bg-[#FAF7F3] text-[#1c0c30] max-w-md sm:max-w-lg w-full rounded-[28px] border border-[#e8ded0] shadow-2xl relative flex flex-col transform scale-95 transition-all duration-300 overflow-hidden"
+    >
+      <!-- Circular Close Button -->
+      <button 
+        id="closeRoomModal" 
+        type="button" 
+        aria-label="Close modal"
+        class="absolute top-3.5 right-3.5 z-30 w-8 h-8 rounded-full bg-[#1c0c30] hover:bg-[#b8860b] text-white flex items-center justify-center transition-colors cursor-pointer shadow-md"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Inner Content Container -->
+      <div class="p-5 sm:p-6 space-y-3.5">
+        
+        <!-- Room Banner Image -->
+        <div class="relative w-full h-36 sm:h-40 rounded-2xl overflow-hidden bg-[#1c0c30]/10 border border-[#e8ded0] shadow-xs">
+          <img id="modalRoomImage" src="" alt="" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Room Header & Title -->
+        <div>
+          <h3 id="modalRoomName" class="text-2xl sm:text-3xl font-serif font-bold text-[#1c0c30] tracking-tight leading-tight" style="font-family: 'Cormorant Garamond', serif;"></h3>
+          <div class="w-8 h-[2px] bg-[#D4A373] mt-1 mb-1.5"></div>
+          <p id="modalRoomDesc" class="text-[#554960] text-xs sm:text-sm leading-relaxed font-normal"></p>
+        </div>
+
+        <div class="border-t border-[#e8ded0]/80"></div>
+
+        <!-- Amenities Section -->
+        <div class="space-y-2">
+          <h4 class="text-xs sm:text-sm font-serif font-bold text-[#1c0c30] flex items-center gap-2" style="font-family: 'Cormorant Garamond', serif;">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
+            Amenities
+          </h4>
+          
+          <div id="modalRoomAmenities" class="grid grid-cols-2 gap-1.5 sm:gap-2"></div>
+        </div>
+
+      </div>
+
+      <!-- Compact Footer Action Bar -->
+      <div class="px-5 sm:px-6 py-3.5 bg-white border-t border-[#e8ded0] flex items-center justify-between gap-3 shrink-0">
+        <button 
+          id="modalCloseBtn"
+          type="button" 
+          class="px-5 py-2 rounded-xl border border-gray-300 hover:border-gray-400 text-[#1c0c30] font-bold text-[11px] uppercase tracking-wider transition-colors cursor-pointer"
+        >
+          CLOSE
+        </button>
+
+        <a 
+          href="#contact" 
+          id="modalBookBtn"
+          class="bg-[#1c0c30] hover:bg-[#b8860b] text-white px-6 py-2 rounded-xl font-bold text-[11px] uppercase tracking-wider transition-colors shadow-sm text-center inline-block"
+        >
+          BOOK NOW
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('roomModal');
+    const modalContent = document.getElementById('roomModalContent');
+    const closeBtn = document.getElementById('closeRoomModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalBookBtn = document.getElementById('modalBookBtn');
+
+    const modalImage = document.getElementById('modalRoomImage') as HTMLImageElement;
+    const modalName = document.getElementById('modalRoomName');
+    const modalDesc = document.getElementById('modalRoomDesc');
+    const modalAmenities = document.getElementById('modalRoomAmenities');
+
+    const roomCards = document.querySelectorAll('[data-room-card]');
+
+    const openModal = (card: Element) => {
+      const name = card.getAttribute('data-room-name') || '';
+      const desc = card.getAttribute('data-room-desc') || '';
+      const image = card.getAttribute('data-room-image') || '';
+      const amenitiesRaw = card.getAttribute('data-room-amenities') || '[]';
+      const amenities: string[] = JSON.parse(amenitiesRaw);
+
+      if (modalImage) modalImage.src = image;
+      if (modalName) modalName.textContent = name;
+      if (modalDesc) modalDesc.textContent = desc;
+
+      if (modalAmenities) {
+        modalAmenities.innerHTML = amenities.map(item => `
+          <div class="flex items-center gap-2 bg-[#FAF5ED] border border-[#EADBCE] px-2.5 py-1.5 rounded-lg text-[11px] font-semibold text-[#1c0c30]">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b] shrink-0"></span>
+            <span class="truncate">${item}</span>
+          </div>
+        `).join('');
+      }
+
+      document.body.style.overflow = 'hidden';
+      
+      modal?.classList.remove('opacity-0', 'pointer-events-none');
+      modal?.classList.add('opacity-100', 'pointer-events-auto');
+
+      modalContent?.classList.remove('scale-95');
+      modalContent?.classList.add('scale-100');
+    };
+
+    const closeModal = () => {
+      modalContent?.classList.remove('scale-100');
+      modalContent?.classList.add('scale-95');
+
+      modal?.classList.remove('opacity-100', 'pointer-events-auto');
+      modal?.classList.add('opacity-0', 'pointer-events-none');
+
+      setTimeout(() => {
+        document.body.style.overflow = '';
+      }, 250);
+    };
+
+    roomCards.forEach(card => {
+      const viewBtn = card.querySelector('[data-action="view-room"]');
+      
+      viewBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal(card);
+      });
+      
+      card.addEventListener('click', (e) => {
+        if (!(e.target as HTMLElement).closest('a')) {
+          openModal(card);
+        }
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    modalCloseBtn?.addEventListener('click', closeModal);
+    modalBookBtn?.addEventListener('click', closeModal);
+
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal?.classList.contains('opacity-100')) {
+        closeModal();
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+</style>

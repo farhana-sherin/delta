@@ -1,0 +1,246 @@
+---
+/**
+ * Footer Component - Delta Suites
+ * Spacious, luxury dark footer featuring quick links, contact info, social handles, legal notices,
+ * and an embedded Google Maps location view.
+ */
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logo.webp';
+
+const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
+const MAPS_URL = "https://share.google/q5bMAj2sOsHdLRL8y";
+const WHATSAPP_URL = "https://wa.me/917907188227";
+
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "#about" },
+  { name: "Rooms", href: "#rooms" },
+  { name: "Dining", href: "#restaurant-dining" },
+  { name: "Experiences", href: "#experiences" },
+  { name: "Facilities", href: "#facilities" },
+  { name: "Gallery", href: "#gallery" },
+  { name: "Contact", href: "/contact" },
+  { name: "Book Stay", href: BOOKING_URL, external: true, highlight: true }
+];
+
+const legalLinks = [
+  { name: "Privacy Policy", href: "#" },
+  { name: "Terms & Conditions", href: "#" },
+  { name: "Cancellation Policy", href: "#" }
+];
+---
+
+<footer class="relative w-full bg-[#0a0314] text-white pt-20 sm:pt-28 pb-12 border-t border-white/10 overflow-hidden">
+  
+  <!-- Glowing Background Orbs -->
+  <div class="absolute top-0 left-1/4 w-[36rem] h-[36rem] bg-[#D4A373]/5 rounded-full filter blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 right-1/4 w-[30rem] h-[30rem] bg-[#b8860b]/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+    
+    <!-- MAIN 4-COLUMN UNCONGESTED GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-14 pb-16 border-b border-white/10">
+      
+      <!-- COLUMN 1: BRAND & HOTEL BADGE (4 cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <a href="/" class="inline-block group">
+          <div class="flex items-center gap-3.5">
+            <Image src={logoImg} alt="Delta Suites Logo" class="h-12 w-auto" />
+            <div>
+              <span class="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wider block" style="font-family: 'Cormorant Garamond', serif;">
+                DELTA SUITES
+              </span>
+              <span class="text-[10px] font-bold text-[#D4A373] uppercase tracking-[0.25em] block">
+                BEYPORE, KOZHIKODE
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <p class="text-white/70 text-sm font-light leading-relaxed max-w-sm">
+          A premium stay in Beypore, Kozhikode. Experience refined Kerala hospitality, spacious luxury suites, wholesome dining, and tailored leisure facilities.
+        </p>
+
+        <!-- Ownership Badge -->
+        <div class="pt-1">
+          <div class="inline-flex items-center gap-2.5 bg-white/5 border border-white/15 px-4 py-2 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-[#D4A373]"></span>
+            <span class="text-[#D4A373] text-[10.5px] font-bold tracking-wider uppercase">
+              AN ADD ON GROUP OF HOTELS PROPERTY
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMN 2: QUICK LINKS (2 cols) -->
+      <div class="lg:col-span-2 space-y-4">
+        <h3 class="text-xs font-bold text-[#D4A373] uppercase tracking-[0.25em] pb-1.5 border-b border-[#D4A373]/30 inline-block">
+          Quick Links
+        </h3>
+
+        <ul class="space-y-2.5 text-xs font-medium">
+          {quickLinks.map(link => (
+            <li>
+              <a 
+                href={link.href}
+                target={link.external ? "_blank" : "_self"}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                class={`transition-colors duration-200 inline-flex items-center gap-2 ${
+                  link.highlight 
+                    ? 'text-[#D4A373] hover:text-white font-bold' 
+                    : 'text-white/75 hover:text-[#D4A373]'
+                }`}
+              >
+                <span class="text-[#D4A373] text-[9px]">›</span>
+                <span>{link.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- COLUMN 3: CONTACT & SOCIAL (3 cols) -->
+      <div class="lg:col-span-3 space-y-4">
+        <h3 class="text-xs font-bold text-[#D4A373] uppercase tracking-[0.25em] pb-1.5 border-b border-[#D4A373]/30 inline-block">
+          Contact Info
+        </h3>
+
+        <ul class="space-y-3.5 text-xs text-white/80 font-light">
+          <!-- Phone -->
+          <li class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-white/5 border border-white/10 text-[#D4A373] flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.47-5.166-3.812-6.636-6.636l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+            </div>
+            <div>
+              <span class="block text-[10px] font-bold text-[#D4A373] uppercase tracking-wider">Phone</span>
+              <a href="tel:+917907188227" class="hover:text-white transition-colors">+91 79071 88227</a>
+              <span class="text-white/40 px-1">/</span>
+              <a href="tel:+917907310797" class="hover:text-white transition-colors">+91 79073 10797</a>
+            </div>
+          </li>
+
+          <!-- WhatsApp -->
+          <li class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-white/5 border border-white/10 text-[#D4A373] flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z M9.75 9.75c.25.5 1 2 2.25 2.25s1.75 2 2.25 2.25" />
+              </svg>
+            </div>
+            <div>
+              <span class="block text-[10px] font-bold text-[#D4A373] uppercase tracking-wider">WhatsApp</span>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">+91 79071 88227</a>
+            </div>
+          </li>
+
+          <!-- Email -->
+          <li class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-white/5 border border-white/10 text-[#D4A373] flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+            </div>
+            <div>
+              <span class="block text-[10px] font-bold text-[#D4A373] uppercase tracking-wider">Email</span>
+              <a href="mailto:deltasuites@addonhotels.com" class="hover:text-white transition-colors truncate block">deltasuites@addonhotels.com</a>
+            </div>
+          </li>
+
+          <!-- Address -->
+          <li class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-white/5 border border-white/10 text-[#D4A373] flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+              </svg>
+            </div>
+            <div>
+              <span class="block text-[10px] font-bold text-[#D4A373] uppercase tracking-wider">Address</span>
+              <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Beypore, Kozhikode, Kerala, India</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- COLUMN 4: EMBEDDED GOOGLE MAP LOCATION (3 cols) -->
+      <div class="lg:col-span-3 space-y-4">
+        <h3 class="text-xs font-bold text-[#D4A373] uppercase tracking-[0.25em] pb-1.5 border-b border-[#D4A373]/30 inline-block">
+          Location Map
+        </h3>
+
+        <!-- Map Container Frame -->
+        <div class="relative w-full h-44 rounded-2xl overflow-hidden border border-white/15 shadow-md bg-white/5 group">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15655.854832560888!2d75.8015!3d11.1685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65bc94adbb36d%3A0x7d6a54101e4a6a58!2sBeypore%2C%20Kozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            class="w-full h-full border-0 filter saturate-90 brightness-90 group-hover:brightness-100 transition-all duration-300"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Delta Suites Beypore Location Map"
+          ></iframe>
+        </div>
+
+        <!-- Open Google Maps Link Button -->
+        <a 
+          href={MAPS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full bg-white/5 hover:bg-[#D4A373] hover:text-black border border-white/15 text-white font-bold text-[10.5px] uppercase tracking-wider py-2.5 px-4 rounded-xl transition-all duration-300 inline-flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <span>OPEN IN GOOGLE MAPS</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM LEGAL & COPYRIGHT BAR -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-white/60">
+      
+      <!-- Copyright text -->
+      <p class="text-center sm:text-left leading-relaxed">
+        © 2026 Delta Suites | An Add On Group of Hotels Property. All Rights Reserved.
+      </p>
+
+      <!-- Legal Links -->
+      <div class="flex items-center gap-6 text-xs">
+        {legalLinks.map(legal => (
+          <a href={legal.href} class="hover:text-white transition-colors">
+            {legal.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- Back To Top Button -->
+      <button 
+        id="backToTopBtn"
+        class="bg-white/5 hover:bg-[#D4A373] hover:text-black border border-white/15 text-white text-[11px] font-bold tracking-wider px-4 py-2 rounded-full transition-all duration-300 inline-flex items-center gap-2 cursor-pointer shrink-0"
+      >
+        <span>BACK TO TOP</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      </button>
+
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&display=swap');
+</style>

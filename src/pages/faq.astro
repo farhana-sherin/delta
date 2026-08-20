@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import FAQ from '../components/FAQ.astro';
+import PlanYourStay from '../components/PlanYourStay.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Frequently Asked Questions | Delta Suites Beypore">
+  <Header isSolid={true} />
+
+  <!-- FAQ Component View -->
+  <main class="bg-[#FAF7F3]">
+    <FAQ />
+  </main>
+
+  <PlanYourStay />
+  <Footer />
+</Layout>

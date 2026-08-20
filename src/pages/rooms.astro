@@ -1,0 +1,234 @@
+---
+/**
+ * Rooms & Accommodations Page - Delta Suites Beypore
+ * Premier luxury card layout design (Pricing removed as requested).
+ */
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import PlanYourStay from '../components/PlanYourStay.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import roomDeluxe from '../assets/images/room_deluxe.png';
+import roomExecutive from '../assets/images/room_executive.png';
+import roomPresidential from '../assets/images/room_presidential.png';
+
+const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
+
+const roomDetails = [
+  {
+    id: "deluxe-room",
+    badge: "MOST POPULAR",
+    name: "Deluxe Room",
+    subtitle: "A comfortable and contemporary room designed for a relaxing stay in Beypore.",
+    description: "A comfortable and contemporary room designed for a relaxing stay in Beypore. Equipped with modern conveniences and serene decor for single guests or couples.",
+    image: roomDeluxe,
+    specs: [
+      { label: "Occupancy", value: "2 Guests" },
+      { label: "Bed Type", value: "King / Queen Bed" },
+      { label: "Room Size", value: "280 Sq. Ft." },
+      { label: "View", value: "City / Courtyard View" }
+    ],
+    amenities: [
+      "King/Queen bed",
+      "Air conditioning",
+      "Smart/LED TV",
+      "Wi-Fi",
+      "Tea & coffee facilities",
+      "Wardrobe",
+      "Work desk",
+      "Attached bathroom",
+      "Hot & cold water",
+      "Toiletries"
+    ]
+  },
+  {
+    id: "executive-suite",
+    badge: "EXECUTIVE LUXURY",
+    name: "Executive Suite",
+    subtitle: "Spacious Living with Upgraded Amenities",
+    description: "Our Executive Suites offer a refined mix of comfort, modern aesthetics, and smart functionality. Features mini lounge seating and enhanced amenities tailored for business executives and families.",
+    image: roomExecutive,
+    specs: [
+      { label: "Occupancy", value: "3 Adults / 2+1 Kids" },
+      { label: "Bed Type", value: "Premium King Size" },
+      { label: "Room Size", value: "420 Sq. Ft." },
+      { label: "View", value: "Scenic Beypore View" }
+    ],
+    amenities: [
+      "Premium King size bed",
+      "Air conditioning",
+      "43\" Smart/LED TV",
+      "High-speed Wi-Fi",
+      "Tea & coffee maker",
+      "Mini lounge seating",
+      "Work desk & chair",
+      "Ensuite bathroom",
+      "Hot & cold shower",
+      "Luxury toiletries"
+    ]
+  },
+  {
+    id: "presidential-suite",
+    badge: "SIGNATURE EXPERIENCE",
+    name: "Presidential Suite",
+    subtitle: "The Ultimate Statement of Luxury & Privacy",
+    description: "The crown jewel of Delta Suites. Features an expansive master bedroom, separate living & dining area, deep soaking tub, and VIP hospitality services for an unforgettable stay.",
+    image: roomPresidential,
+    specs: [
+      { label: "Occupancy", value: "4 Guests" },
+      { label: "Bed Type", value: "Emperor King Bed" },
+      { label: "Room Size", value: "650 Sq. Ft." },
+      { label: "View", value: "Panoramic Skyline View" }
+    ],
+    amenities: [
+      "Emperor King bed",
+      "Air conditioning",
+      "55\" Smart/LED TV",
+      "High-speed Wi-Fi",
+      "Separate living & dining area",
+      "Minibar & coffee machine",
+      "Executive work desk",
+      "Soaking tub / Jacuzzi",
+      "Bathrobes & slippers",
+      "Express room service"
+    ]
+  }
+];
+---
+
+<Layout title="Rooms & Suites | Delta Suites Beypore">
+  <Header isSolid={true} />
+
+  <main class="bg-[#FAF7F3] pt-20 pb-12 sm:pb-20">
+    
+    <!-- COMPACT PAGE HERO HEADER -->
+    <div class="max-w-3xl mx-auto px-4 text-center py-8 sm:py-12 space-y-1.5">
+      <!-- Eyebrow Tag -->
+      <div class="flex items-center justify-center gap-2.5 mb-0.5">
+        <div class="w-8 h-[1px] bg-[#D4A373]"></div>
+        <span class="text-[#b8860b] text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
+          ACCOMMODATIONS & SUITES
+        </span>
+        <div class="w-8 h-[1px] bg-[#D4A373]"></div>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-serif font-bold text-[#1c0c30] tracking-tight" style="font-family: 'Cormorant Garamond', serif;">
+        Rooms & Suites
+      </h1>
+
+      <p class="text-[#554960] text-xs sm:text-sm max-w-lg mx-auto leading-relaxed font-normal">
+        Understated luxury, modern amenities, and supreme comfort in the heart of Beypore, Kozhikode.
+      </p>
+    </div>
+
+    <!-- ROOM DETAILS SHOWCASE CARDS (COMPACT PROPORTIONS) -->
+    <div class="max-w-[1140px] mx-auto px-4 sm:px-6 space-y-8 sm:space-y-12">
+      {roomDetails.map((room, index) => (
+        <div 
+          id={room.id}
+          class={`bg-white rounded-[24px] overflow-hidden border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch ${
+            index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+          }`}
+        >
+          <!-- Room Image Showcase (5 cols) -->
+          <div class={`lg:col-span-5 relative bg-[#1c0c30]/5 overflow-hidden min-h-[240px] sm:min-h-[300px] ${
+            index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
+          }`}>
+            <Image 
+              src={room.image} 
+              alt={room.name} 
+              class="w-full h-full object-cover" 
+              loading="lazy" 
+            />
+
+            <!-- Badge Overlay (Top Left) -->
+            <div class="absolute top-4 left-4 bg-[#1c0c30] text-[#D4A373] text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border border-[#D4A373]/30 shadow-xs">
+              {room.badge}
+            </div>
+          </div>
+
+          <!-- Room Information Stack (7 cols) -->
+          <div class={`lg:col-span-7 p-5 sm:p-7 flex flex-col justify-between space-y-4 ${
+            index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'
+          }`}>
+            <div class="space-y-3">
+              <!-- Name & Subtitle -->
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#1c0c30] leading-snug" style="font-family: 'Cormorant Garamond', serif;">
+                  {room.name}
+                </h2>
+                <p class="text-[#b8860b] text-xs font-serif italic font-medium">
+                  {room.subtitle}
+                </p>
+              </div>
+
+              <!-- Description -->
+              <p class="text-[#554960] text-xs leading-relaxed font-normal">
+                {room.description}
+              </p>
+
+              <!-- Specifications Grid (2x2) -->
+              <div class="grid grid-cols-2 gap-2.5 pt-1">
+                {room.specs.map(spec => (
+                  <div class="bg-[#FAF5ED] px-3 py-2 rounded-lg border border-[#e8ded0]">
+                    <span class="text-[9px] font-bold text-[#b8860b] uppercase tracking-wider block">
+                      {spec.label}
+                    </span>
+                    <span class="text-xs font-semibold text-[#1c0c30]">
+                      {spec.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Key Amenities Chips -->
+              <div class="pt-1">
+                <span class="text-[10px] font-bold text-[#1c0c30] uppercase tracking-wider block mb-1.5">
+                  Key Amenities:
+                </span>
+                <div class="flex flex-wrap gap-1.5">
+                  {room.amenities.map(item => (
+                    <span class="bg-[#FAF5ED] text-[#554960] text-[10.5px] font-medium px-2.5 py-0.5 rounded-full border border-[#e8ded0] inline-flex items-center gap-1">
+                      <span class="text-[#b8860b] text-[7px]">✓</span>
+                      <span>{item}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <!-- Booking CTA Button -->
+            <div class="pt-3 border-t border-[#e8ded0] flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div>
+                <span class="text-[10px] text-[#6b5c77] block uppercase tracking-wider">Best Direct Rates</span>
+                <span class="text-xs font-bold text-[#1c0c30]">Instant Booking Guaranteed</span>
+              </div>
+
+              <a 
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group w-full sm:w-auto bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.18em] py-3 px-7 rounded-xl transition-all duration-300 shadow-md inline-flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>BOOK THIS ROOM</span>
+                <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </main>
+
+  <PlanYourStay />
+  <Footer />
+</Layout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&display=swap');
+</style>

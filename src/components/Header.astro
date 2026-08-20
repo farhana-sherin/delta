@@ -1,28 +1,37 @@
 ---
 import { Image } from 'astro:assets';
 import logoImage from '../assets/images/logo.webp';
+
+interface Props {
+  isSolid?: boolean;
+}
+
+const { isSolid = false } = Astro.props;
 ---
 
 <header id="main-header" class="fixed top-0 inset-x-0 z-50 text-white font-sans text-xs tracking-wider transition-all duration-300">
   <!-- Top Bar -->
-  <div class="hidden md:flex justify-between items-center py-2.5 px-4 md:px-8 xl:px-16 border-b border-white/10 bg-[#120524]/70 backdrop-blur-sm text-[10px] text-white/70">
+  <div class={`hidden md:flex justify-between items-center py-2.5 px-4 md:px-8 xl:px-16 border-b border-white/10 ${isSolid ? 'bg-[#120524]' : 'bg-[#120524]/70 backdrop-blur-sm'} text-[10px] text-white/70`}>
     <div class="flex items-center gap-2">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-      <span>Spw Road, Choorinikara, Kalamassery, Muttom, Kochi, Kerala 683106</span>
+      <a href="https://share.google/q5bMAj2sOsHdLRL8y" target="_blank" rel="noopener noreferrer" class="hover:text-[#D4A373] transition-colors">
+        Beypore, Kozhikode, Kerala, India
+      </a>
     </div>
     <div class="flex items-center gap-6">
       <div class="flex items-center gap-2">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-        <span>+91 9995 717 878</span>
+        <a href="tel:+917907188227" class="hover:text-[#D4A373] transition-colors">+91 79071 88227</a>
       </div>
       <div class="flex items-center gap-3 border-l border-white/20 pl-6">
-        <a href="#" class="hover:text-[#D4A373] transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        <a href="https://wa.me/917907188227" target="_blank" rel="noopener noreferrer" class="hover:text-[#D4A373] transition-colors" title="WhatsApp Us">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.157 4.228 4.316-1.127z"/></svg>
+        </a>
       </div>
     </div>
   </div>
 
-  <div id="header-nav-bar" class="bg-gradient-to-b from-[#0e031a]/90 via-[#120524]/50 to-transparent py-4 md:py-6 px-4 md:px-8 xl:px-16 uppercase font-medium transition-all duration-300">
+  <div id="header-nav-bar" class={`${isSolid ? 'bg-[#120524] border-b border-white/10 shadow-lg' : 'bg-gradient-to-b from-[#0e031a]/90 via-[#120524]/50 to-transparent'} py-3.5 md:py-4 px-4 md:px-8 xl:px-16 uppercase font-medium transition-all duration-300`}>
     <div class="max-w-[1400px] mx-auto flex items-center justify-between pointer-events-auto">
       
       <!-- Logo left side (as in image) -->
@@ -32,20 +41,21 @@ import logoImage from '../assets/images/logo.webp';
 
       <!-- Desktop Nav Center -->
       <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 text-[11px] 2xl:text-[12px] opacity-90">
-        <a href="#" class="text-[#D4A373] relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-4 after:h-[1px] after:bg-[#D4A373]">HOME</a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">ABOUT US</a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">ROOMS</a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">DINING</a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">EXPERIENCES</a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">FACILITIES</a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">GALLERY</a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">LOCATION</a>
-        <a href="#" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">CONTACT</a>
+        <a href="/" class="text-[#D4A373] relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-4 after:h-[1px] after:bg-[#D4A373]">HOME</a>
+        <a href="/#about" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">ABOUT US</a>
+        <a href="/rooms" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">ROOMS</a>
+        <a href="/dining" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">DINING</a>
+        <a href="/#experiences" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">EXPERIENCES</a>
+        <a href="/#facilities" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">FACILITIES</a>
+        <a href="/#gallery" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">GALLERY</a>
+        <a href="/faq" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">FAQ</a>
+        <a href="https://share.google/q5bMAj2sOsHdLRL8y" target="_blank" rel="noopener noreferrer" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">LOCATION</a>
+        <a href="/contact" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">CONTACT</a>
       </nav>
 
       <!-- Desktop CTA Right -->
       <div class="hidden xl:flex items-center">
-        <a href="#" class="inline-flex items-center justify-center border border-[#D4A373] text-[#D4A373] px-6 py-2 hover:bg-[#D4A373] hover:text-black transition-colors duration-300 font-medium tracking-widest text-[11px]">
+        <a href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center border border-[#D4A373] text-[#D4A373] px-6 py-2.5 hover:bg-[#D4A373] hover:text-black transition-colors duration-300 font-semibold tracking-widest text-[11px] rounded-full shadow-sm">
           BOOK NOW
         </a>
       </div>
@@ -55,13 +65,13 @@ import logoImage from '../assets/images/logo.webp';
   <!-- Mobile CTA / Nav Only -->
   <div class="xl:hidden fixed bottom-0 inset-x-0 z-50 bg-[#120524]/90 backdrop-blur-md border-t border-white/10 p-4 pb-safe">
     <div class="flex items-center justify-between gap-3 max-w-[400px] mx-auto">
-      <a href="tel:#" class="flex-1 text-center py-3 px-2 border border-white/20 text-white text-[11px] tracking-wider hover:bg-white/10 transition-colors rounded-sm">
+      <a href="tel:+917907188227" class="flex-1 text-center py-3 px-2 border border-white/20 text-white text-[11px] tracking-wider hover:bg-white/10 transition-colors rounded-full">
         CALL
       </a>
-      <a href="https://wa.me/#" class="flex-1 text-center py-3 px-2 border border-white/20 text-white text-[11px] tracking-wider hover:bg-white/10 transition-colors rounded-sm">
+      <a href="https://wa.me/917907188227" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-3 px-2 border border-white/20 text-white text-[11px] tracking-wider hover:bg-white/10 transition-colors rounded-full">
         WHATSAPP
       </a>
-      <a href="#" class="flex-1 text-center py-3 px-2 bg-[#D4A373] text-black font-semibold text-[11px] tracking-wider hover:bg-[#b0875e] transition-colors rounded-sm">
+      <a href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-3 px-2 bg-[#D4A373] text-black font-semibold text-[11px] tracking-wider hover:bg-[#b0875e] transition-colors rounded-full shadow-md">
         BOOK NOW
       </a>
     </div>

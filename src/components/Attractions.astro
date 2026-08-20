@@ -1,0 +1,448 @@
+---
+import { Image } from 'astro:assets';
+
+// High resolution attraction images
+import attractionBeach from '../assets/images/attraction_beach.png';
+import attractionPulimuttu from '../assets/images/attraction_pulimuttu.png';
+import attractionUru from '../assets/images/attraction_uru.png';
+import attractionSMStreet from '../assets/images/attraction_smstreet.png';
+
+// Fallback high quality resort images for regional spots
+import galleryExterior from '../assets/images/gallery_exterior.png';
+import galleryProperty from '../assets/images/gallery_property.png';
+
+const categories = [
+  { id: 'all', label: 'All Destinations' },
+  { id: 'coastal', label: 'Coastal & Beaches' },
+  { id: 'heritage', label: 'Maritime Heritage' },
+  { id: 'culture', label: 'Markets & Culture' },
+  { id: 'tours', label: 'Excursions' }
+];
+
+const attractions = [
+  {
+    num: "01",
+    id: "beypore-beach",
+    category: "coastal",
+    categoryLabel: "COASTAL & BEACHES",
+    title: "Beypore Beach",
+    tagline: "Golden Sands & Sunset Views",
+    description: "Relax on pristine golden shores where the calm waters of the Chaliyar River merge into the vast Arabian Sea. A tranquil evening sanctuary just minutes away.",
+    distance: "1.2 KM",
+    driveTime: "4 Mins Drive",
+    image: attractionBeach,
+    highlights: ["Golden Sunset Views", "Serene Promenade Walk", "Calm Arabian Sea Waves"],
+    mapQuery: "Beypore+Beach+Kozhikode"
+  },
+  {
+    num: "02",
+    id: "beypore-pulimuttu",
+    category: "coastal",
+    categoryLabel: "COASTAL & BEACHES",
+    title: "Beypore Pulimuttu",
+    tagline: "Historic 2-KM Sea Breakwater Pier",
+    description: "Stroll along the iconic 2-kilometer stone breakwater pathway extending deep into the open ocean, offering spectacular breeze-filled sea panoramas.",
+    distance: "1.8 KM",
+    driveTime: "6 Mins Drive",
+    image: attractionPulimuttu,
+    highlights: ["2KM Walk Into Sea", "Ocean Panorama", "Twilight Fishing Boats"],
+    mapQuery: "Beypore+Pulimuttu+Breakwater"
+  },
+  {
+    num: "03",
+    id: "beypore-uru",
+    category: "heritage",
+    categoryLabel: "MARITIME HERITAGE",
+    title: "Beypore Uru Wooden Shipbuilding",
+    tagline: "Centuries-Old Craftsmanship",
+    description: "Witness master artisans handcrafting giant wooden dhow ships (Uru) using ancient Malabar techniques preserved for over a millennium.",
+    distance: "1.5 KM",
+    driveTime: "5 Mins Drive",
+    image: attractionUru,
+    highlights: ["UNESCO Heritage Craft", "Living Artisan Yard", "Royal Ship Orders"],
+    mapQuery: "Beypore+Uru+Building+Yard"
+  },
+  {
+    num: "04",
+    id: "sm-street",
+    category: "culture",
+    categoryLabel: "MARKETS & CULTURE",
+    title: "SM Street (Sweetmeat Street)",
+    tagline: "Bustling Historic Malabar Market",
+    description: "Kozhikode’s iconic pedestrian street famous for authentic hot Calicut Halwa, freshly fried banana chips, textiles, and vibrant evening culture.",
+    distance: "10.0 KM",
+    driveTime: "20 Mins Drive",
+    image: attractionSMStreet,
+    highlights: ["Famous Calicut Halwa", "Heritage Shopping", "Street Snacks"],
+    mapQuery: "Sweetmeat+Street+SM+Street+Kozhikode"
+  },
+  {
+    num: "05",
+    id: "beypore-harbour",
+    category: "heritage",
+    categoryLabel: "MARITIME HERITAGE",
+    title: "Beypore Heritage Port & Harbour",
+    tagline: "Kerala's Ancient Maritime Hub",
+    description: "Experience the vibrant activity of one of South India's historic spice trading ports, where merchant vessels have docked for centuries.",
+    distance: "2.0 KM",
+    driveTime: "7 Mins Drive",
+    image: galleryExterior,
+    highlights: ["Spice Trade History", "Fishing Fleet Docks", "Fresh Seafood Hub"],
+    mapQuery: "Beypore+Harbour+Port"
+  },
+  {
+    num: "06",
+    id: "kozhikode-beach",
+    category: "coastal",
+    categoryLabel: "COASTAL & BEACHES",
+    title: "Kozhikode Promenade Beach",
+    tagline: "Historic Piers & Malabar Street Food",
+    description: "Celebrated beach promenade featuring historic century-old sea piers, sunset viewpoints, and famous Malabar food stalls.",
+    distance: "11.0 KM",
+    driveTime: "22 Mins Drive",
+    image: galleryProperty,
+    highlights: ["Historic Sea Piers", "Malabar Street Food", "Sunset Promenade"],
+    mapQuery: "Kozhikode+Beach+Calicut"
+  }
+];
+---
+
+<section id="attractions" class="relative w-full min-h-screen lg:h-screen bg-[#FAF7F3] text-[#1c0c30] py-6 sm:py-8 lg:py-10 flex flex-col justify-between overflow-hidden border-t border-[#e8ded0]">
+  
+  <!-- Subtle Ambient Glow Accents -->
+  <div class="absolute top-1/4 right-1/4 w-[36rem] h-[36rem] bg-[#D4A373]/12 rounded-full filter blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] bg-[#1c0c30]/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col justify-between flex-1 h-full">
+    
+    <!-- Compact Top Container -->
+    <div class="shrink-0 space-y-3 mb-4">
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[#e8ded0] pb-3">
+        <div>
+          <!-- Eyebrow Tag -->
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-[#b8860b] animate-ping"></span>
+            <span class="text-[#b8860b] text-[11px] font-bold tracking-[0.25em] uppercase">
+              DESTINATION EXPLORER
+            </span>
+            <div class="w-8 h-[1px] bg-[#D4A373]"></div>
+          </div>
+
+          <!-- Main Title -->
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight text-[#1c0c30] leading-[1.1]" style="font-family: 'Cormorant Garamond', serif;">
+            Explore Beypore & Kozhikode
+          </h2>
+        </div>
+
+       
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="pt-1">
+        <div class="flex items-center justify-start gap-2 overflow-x-auto pb-1 scrollbar-none no-scrollbar">
+          {categories.map((cat, index) => (
+            <button
+              type="button"
+              data-attraction-tab={cat.id}
+              class={`attraction-tab-btn whitespace-nowrap px-4 py-1.5 sm:px-4.5 sm:py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer border shadow-xs ${
+                index === 0
+                  ? 'active-tab bg-[#1c0c30] text-white border-[#1c0c30] shadow-md'
+                  : 'bg-white text-[#554960] border-[#EADBCE] hover:border-[#D4A373] hover:text-[#1c0c30] hover:bg-[#FAF5ED]'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN-HEIGHT FULL DUAL SPOTLIGHT & INTERACTIVE LIST GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 flex-1 min-h-0 items-stretch pb-2">
+      
+      <!-- LEFT COLUMN: FEATURED SPOTLIGHT CARD (7 cols out of 12) -->
+      <div class="lg:col-span-7 flex flex-col h-full min-h-[360px] lg:min-h-0">
+        <div 
+          id="spotlightCard"
+          class="relative w-full h-full rounded-[28px] overflow-hidden border border-[#e8ded0] shadow-[0_12px_40px_rgba(0,0,0,0.08)] group bg-white flex flex-col justify-end p-5 sm:p-8 transition-all duration-500"
+        >
+          <!-- Dynamic Background Image -->
+          <img 
+            id="spotlightImage"
+            src={attractions[0].image.src} 
+            alt={attractions[0].title}
+            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+          />
+
+          <!-- Vignette Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1c0c30] via-[#1c0c30]/55 to-transparent"></div>
+
+          <!-- Top Floating Metadata Badges -->
+          <div class="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 flex items-center justify-between z-10 pointer-events-none">
+            <!-- Distance Pill Badge -->
+            <div class="bg-white/95 backdrop-blur-md border border-[#e8ded0] text-[#1c0c30] text-[10px] sm:text-[11px] font-bold tracking-wider px-3.5 py-1.5 rounded-full uppercase flex items-center gap-2 shadow-md">
+              <svg class="w-3.5 h-3.5 text-[#b8860b]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+              </svg>
+              <span id="spotlightDistance">{attractions[0].distance} FROM HOTEL</span>
+              <span class="text-[#b8860b]">•</span>
+              <span id="spotlightDrive">{attractions[0].driveTime}</span>
+            </div>
+
+            <!-- Category Label -->
+            <div id="spotlightCategory" class="hidden sm:flex bg-[#1c0c30] text-[#D4A373] border border-[#D4A373]/40 text-[9px] sm:text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-full uppercase shadow-md">
+              {attractions[0].categoryLabel}
+            </div>
+          </div>
+
+          <!-- Bottom Spotlight Text Content -->
+          <div class="relative z-10 space-y-2.5">
+            <span id="spotlightTagline" class="inline-block text-[#D4A373] text-[11px] font-bold tracking-widest uppercase">
+              {attractions[0].tagline}
+            </span>
+
+            <h3 id="spotlightTitle" class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight leading-tight drop-shadow-sm" style="font-family: 'Cormorant Garamond', serif;">
+              {attractions[0].title}
+            </h3>
+
+            <p id="spotlightDesc" class="text-gray-200 text-xs sm:text-sm leading-relaxed font-normal max-w-xl line-clamp-2 sm:line-clamp-none">
+              {attractions[0].description}
+            </p>
+
+            <!-- Highlights Chips -->
+            <div id="spotlightHighlights" class="hidden sm:flex flex-wrap gap-2 pt-0.5">
+              {attractions[0].highlights.map(h => (
+                <span class="bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] px-2.5 py-1 rounded-lg font-semibold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#D4A373]"></span>
+                  <span>{h}</span>
+                </span>
+              ))}
+            </div>
+
+            <!-- Action Button: Open Directions -->
+            <div class="pt-2 flex items-center gap-3">
+              <a
+                id="spotlightMapBtn"
+                href={`https://www.google.com/maps/search/?api=1&query=${attractions[0].mapQuery}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-white hover:bg-[#b8860b] text-[#1c0c30] hover:text-white font-bold text-[10px] sm:text-[11px] uppercase tracking-widest py-2.5 px-5 rounded-full transition-all duration-300 shadow-xl group/btn"
+              >
+                <svg class="w-3.5 h-3.5 text-[#b8860b] group-hover/btn:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.813c-.317-.159-.69-.159-1.006 0L3.622 5.747C3.24 5.938 3 6.327 3 6.753v11.609c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0z" />
+                </svg>
+                <span>GET DIRECTIONS ON MAP</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: INTERACTIVE ATTRACTIONS LIST (5 cols out of 12) -->
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-2 lg:space-y-2.5 overflow-y-auto max-h-[380px] lg:max-h-none pr-1">
+        {attractions.map((item, index) => (
+          <div
+            data-attraction-card
+            data-id={item.id}
+            data-category={item.category}
+            data-index={index}
+            data-title={item.title}
+            data-tagline={item.tagline}
+            data-desc={item.description}
+            data-distance={item.distance}
+            data-drive={item.driveTime}
+            data-category-label={item.categoryLabel}
+            data-highlights={JSON.stringify(item.highlights)}
+            data-image={item.image.src}
+            data-map-query={item.mapQuery}
+            class={`attraction-list-item group bg-white hover:bg-[#FAF5ED] rounded-xl p-3 sm:p-3.5 border border-[#e8ded0] shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-md transition-all duration-300 cursor-pointer flex items-center justify-between gap-3 ${
+              index === 0
+                ? 'active-spotlight border-[#D4A373] bg-[#FAF5ED] shadow-[0_6px_20px_rgba(212,163,115,0.2)]'
+                : ''
+            }`}
+          >
+            <!-- Left Thumbnail + Info -->
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden bg-[#1c0c30]/5 shrink-0 border border-[#e8ded0]">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <span class="absolute top-1 left-1 bg-[#1c0c30]/90 text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded">
+                  {item.num}
+                </span>
+              </div>
+
+              <div class="min-w-0 space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="text-[#b8860b] text-[9.5px] font-bold tracking-wider uppercase truncate">
+                    {item.distance} FROM HOTEL
+                  </span>
+                </div>
+
+                <h4 class="text-sm sm:text-base font-serif font-bold text-[#1c0c30] group-hover:text-[#b8860b] transition-colors truncate" style="font-family: 'Cormorant Garamond', serif;">
+                  {item.title}
+                </h4>
+
+                <p class="text-[#554960] text-[11px] truncate max-w-xs font-normal">
+                  {item.tagline}
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Arrow Circle -->
+            <div class="w-8 h-8 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#1c0c30] group-hover:bg-[#1c0c30] group-hover:text-white flex items-center justify-center transition-all duration-300 shrink-0">
+              <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll<HTMLButtonElement>('[data-attraction-tab]');
+    const listItems = document.querySelectorAll<HTMLElement>('[data-attraction-card]');
+
+    // Spotlight Elements
+    const spotlightImg = document.getElementById('spotlightImage') as HTMLImageElement;
+    const spotlightTitle = document.getElementById('spotlightTitle');
+    const spotlightTagline = document.getElementById('spotlightTagline');
+    const spotlightDesc = document.getElementById('spotlightDesc');
+    const spotlightDistance = document.getElementById('spotlightDistance');
+    const spotlightDrive = document.getElementById('spotlightDrive');
+    const spotlightCategory = document.getElementById('spotlightCategory');
+    const spotlightHighlights = document.getElementById('spotlightHighlights');
+    const spotlightMapBtn = document.getElementById('spotlightMapBtn') as HTMLAnchorElement;
+
+    const updateSpotlight = (card: HTMLElement) => {
+      const title = card.getAttribute('data-title') || '';
+      const tagline = card.getAttribute('data-tagline') || '';
+      const desc = card.getAttribute('data-desc') || '';
+      const distance = card.getAttribute('data-distance') || '';
+      const drive = card.getAttribute('data-drive') || '';
+      const categoryLabel = card.getAttribute('data-category-label') || '';
+      const imageSrc = card.getAttribute('data-image') || '';
+      const mapQuery = card.getAttribute('data-map-query') || '';
+      const highlightsRaw = card.getAttribute('data-highlights') || '[]';
+      
+      let highlights: string[] = [];
+      try {
+        highlights = JSON.parse(highlightsRaw);
+      } catch (e) {
+        highlights = [];
+      }
+
+      // Update Highlighted Active List Item
+      listItems.forEach(item => {
+        if (item === card) {
+          item.classList.add('active-spotlight', 'border-[#D4A373]', 'bg-[#FAF5ED]', 'shadow-[0_6px_20px_rgba(212,163,115,0.2)]');
+          item.classList.remove('border-[#e8ded0]', 'bg-white');
+        } else {
+          item.classList.remove('active-spotlight', 'border-[#D4A373]', 'bg-[#FAF5ED]', 'shadow-[0_6px_20px_rgba(212,163,115,0.2)]');
+          item.classList.add('border-[#e8ded0]', 'bg-white');
+        }
+      });
+
+      // Fade out image smoothly then replace
+      if (spotlightImg) {
+        spotlightImg.style.opacity = '0.3';
+        setTimeout(() => {
+          spotlightImg.src = imageSrc;
+          spotlightImg.alt = title;
+          spotlightImg.style.opacity = '1';
+        }, 150);
+      }
+
+      if (spotlightTitle) spotlightTitle.textContent = title;
+      if (spotlightTagline) spotlightTagline.textContent = tagline;
+      if (spotlightDesc) spotlightDesc.textContent = desc;
+      if (spotlightDistance) spotlightDistance.textContent = `${distance} FROM HOTEL`;
+      if (spotlightDrive) spotlightDrive.textContent = drive;
+      if (spotlightCategory) spotlightCategory.textContent = categoryLabel;
+
+      if (spotlightMapBtn) {
+        spotlightMapBtn.href = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+      }
+
+      if (spotlightHighlights && highlights.length > 0) {
+        spotlightHighlights.innerHTML = highlights.map(h => `
+          <span class="bg-white/15 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] px-2.5 py-1 rounded-lg font-semibold flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#D4A373]"></span>
+            <span>${h}</span>
+          </span>
+        `).join('');
+      }
+    };
+
+    // Filter Items
+    const filterAttractions = (category: string) => {
+      tabButtons.forEach(btn => {
+        const cat = btn.getAttribute('data-attraction-tab');
+        if (cat === category) {
+          btn.classList.add('active-tab', 'bg-[#1c0c30]', 'text-white', 'border-[#1c0c30]', 'shadow-md');
+          btn.classList.remove('bg-white', 'text-[#554960]', 'border-[#EADBCE]');
+        } else {
+          btn.classList.remove('active-tab', 'bg-[#1c0c30]', 'text-white', 'border-[#1c0c30]', 'shadow-md');
+          btn.classList.add('bg-white', 'text-[#554960]', 'border-[#EADBCE]');
+        }
+      });
+
+      let firstVisible: HTMLElement | null = null;
+
+      listItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (category === 'all' || itemCategory === category) {
+          item.style.display = 'flex';
+          if (!firstVisible) firstVisible = item;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (firstVisible) {
+        updateSpotlight(firstVisible);
+      }
+    };
+
+    // Tab Listeners
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.getAttribute('data-attraction-tab') || 'all';
+        filterAttractions(cat);
+      });
+    });
+
+    // Card Listeners
+    listItems.forEach(card => {
+      card.addEventListener('click', () => {
+        updateSpotlight(card);
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

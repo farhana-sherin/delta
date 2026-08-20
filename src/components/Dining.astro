@@ -1,0 +1,168 @@
+---
+import { Image } from 'astro:assets';
+import restaurantImg from '../assets/images/03_restaurant.png';
+import breakfastImg from '../assets/images/dining_breakfast.png';
+import inroomImg from '../assets/images/dining_inroom.png';
+
+const diningOfferings = [
+  {
+    id: "restaurant",
+    badge: "DELUXE DINING",
+    title: "Restaurant",
+    subtitle: "A Comfortable Place to Dine",
+    description: "Enjoy a selection of local favourites and popular Indian dishes in a relaxed and welcoming atmosphere.",
+    ctaText: "EXPLORE DINING",
+    image: restaurantImg
+  },
+  {
+    id: "breakfast",
+    badge: "MORNING SPREAD",
+    title: "Breakfast",
+    subtitle: "Start Your Morning Right",
+    description: "Begin your day with a fresh and satisfying breakfast before heading out to explore Beypore and Kozhikode.",
+    ctaText: "VIEW MENU",
+    image: breakfastImg
+  },
+  {
+    id: "in-room-dining",
+    badge: "ROOM SERVICE",
+    title: "In-Room Dining",
+    subtitle: "Private & Convenient",
+    description: "Enjoy selected food and beverages from the comfort of your room.",
+    ctaText: "ORDER IN-ROOM",
+    image: inroomImg
+  }
+];
+---
+
+<section id="dining" class="relative w-full bg-[#FAF7F3] py-18 sm:py-28 overflow-hidden border-t border-[#e8ded0]">
+  
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-[#b8860b]/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-2xl mx-auto text-center mb-14 sm:mb-18 flex flex-col items-center">
+      
+      <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase mb-2">
+        CULINARY EXPERIENCE
+      </span>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-[#1c0c30] font-serif font-bold tracking-tight mb-2.5" style="font-family: 'Cormorant Garamond', serif;">
+        Dining at <span class="italic font-normal text-[#b8860b]">Delta Suites</span>
+      </h2>
+
+      <!-- Gold Accent Line -->
+      <div class="flex items-center gap-2.5 justify-center mb-3">
+        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+        <div class="w-1.5 h-1.5 rotate-45 bg-[#D4A373]"></div>
+        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+      </div>
+
+      <!-- Tagline -->
+      <p class="text-[#b8860b] text-sm sm:text-base font-serif italic font-medium mb-3">
+        Good Food. Comfortable Ambience. Memorable Moments.
+      </p>
+
+     
+
+    </div>
+
+    <!-- LARGE & PROMINENT DINING CARDS MATCHING REFERENCE UI -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-[1400px] mx-auto mb-14 sm:mb-18">
+      {diningOfferings.map((item) => (
+        <div class="group bg-white rounded-[32px] p-6 sm:p-7 border border-[#e8ded0] shadow-[0_8px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(212,163,115,0.2)] hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden relative cursor-pointer">
+          
+          <div>
+            <!-- Large Image Showcase -->
+            <div class="relative w-full aspect-[4/3] rounded-[22px] overflow-hidden bg-[#1c0c30]/5 mb-5 border border-[#e8ded0]/60 shadow-xs">
+              <Image 
+                src={item.image} 
+                alt={item.title} 
+                class="w-full h-full object-cover transform group-hover:scale-106 transition-transform duration-500 ease-out" 
+                loading="lazy" 
+              />
+              
+              <!-- Top Right Floating Pill Badge -->
+              <div class="absolute top-3.5 right-3.5 bg-white/95 backdrop-blur-md text-[#b8860b] text-[10px] font-bold tracking-wider px-3.5 py-1.5 rounded-full uppercase flex items-center gap-1.5 border border-[#e8ded0] shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b] animate-pulse"></span>
+                <span>{item.badge}</span>
+              </div>
+
+              <!-- Vignette Gradient at Image Bottom -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1c0c30]/30 via-transparent to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-500 pointer-events-none"></div>
+            </div>
+          </div>
+
+          <!-- Prominent Bottom Footer Row matching reference card UI layout -->
+          <div class="flex items-start justify-between gap-3 pt-2">
+            
+            <div class="flex items-start gap-3.5">
+              <!-- Large Circular Emblem Icon -->
+              <div class="w-12 h-12 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#b8860b] group-hover:border-[#b8860b] group-hover:bg-[#1c0c30] group-hover:text-white flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 shadow-xs">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z M9 9h6 M9 13h6 M9 17h3" />
+                </svg>
+              </div>
+
+              <!-- Text Stack -->
+              <div class="space-y-1">
+                <h3 class="text-[#1c0c30] group-hover:text-[#b8860b] text-lg sm:text-xl font-bold leading-tight transition-colors">
+                  {item.title}
+                </h3>
+
+                <p class="text-[#6b5c77] text-xs sm:text-sm leading-normal font-normal">
+                  {item.subtitle}
+                </p>
+
+                <!-- Accent CTA Link with Arrow -->
+                <div class="pt-2">
+                  <a 
+                    href="#contact" 
+                    class="inline-flex items-center gap-1.5 text-[#b8860b] hover:text-[#1c0c30] font-bold text-xs uppercase tracking-wider transition-colors"
+                  >
+                    <span>{item.ctaText}</span>
+                    <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right 6-dot Grid Icon -->
+            <div class="text-gray-300 group-hover:text-[#b8860b] transition-colors pt-1 shrink-0">
+              <svg class="w-6 h-6 opacity-70" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="8" cy="8" r="1.5"/>
+                <circle cx="16" cy="8" r="1.5"/>
+                <circle cx="8" cy="12" r="1.5"/>
+                <circle cx="16" cy="12" r="1.5"/>
+                <circle cx="8" cy="16" r="1.5"/>
+                <circle cx="16" cy="16" r="1.5"/>
+              </svg>
+            </div>
+
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Centered Bottom CTA Button -->
+    <div class="flex justify-center">
+      <a 
+        href="#contact" 
+        class="group bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-4 px-9 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-2.5 cursor-pointer"
+      >
+        <span>EXPLORE DINING</span>
+        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+</section>

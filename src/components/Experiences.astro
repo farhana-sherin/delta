@@ -1,0 +1,235 @@
+---
+/**
+ * Experiences & Leisure Section - Delta Suites
+ * Featuring all 6 leisure offerings in the signature open layout UI
+ * with an interactive "View More" toggle button to keep page length optimal.
+ */
+import { Image } from 'astro:assets';
+import poolImg from '../assets/images/04_pool.png';
+import gymImg from '../assets/images/05_fitness.png';
+import familyTimeImg from '../assets/images/family_time.png';
+import propertyImg from '../assets/images/gallery_property.png';
+import roomImg from '../assets/images/room_executive.png';
+import gameZoneImg from '../assets/images/07_game_zone.png';
+
+const experiences = [
+  {
+    id: "outdoor-pool",
+    title: "Outdoor Swimming Pool",
+    subtitle: "Relax. Refresh. Repeat.",
+    description: "A refreshing space to relax and unwind during your stay.",
+    image: poolImg,
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M3 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M15 5.5a2.5 2.5 0 10-5 0v3.5h5V5.5z" />`
+  },
+  {
+    id: "fitness-center",
+    title: "Fitness Center",
+    subtitle: "Stay Active & Healthy",
+    description: "Well-equipped gym facilities to help you stay active.",
+    image: gymImg,
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M6.5 12h11M4 9v6M20 9v6M6.5 7v10M17.5 7v10" />`
+  },
+  {
+    id: "relaxed-leisure",
+    title: "Relaxed Leisure Environment",
+    subtitle: "Everyday Wellness",
+    description: "Designed for comfort, balance, and everyday wellness.",
+    image: familyTimeImg,
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />`
+  },
+  {
+    id: "well-maintained",
+    title: "Well-Maintained Facilities",
+    subtitle: "Pristine Standards",
+    description: "Clean and thoughtfully maintained for guest comfort.",
+    image: propertyImg,
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />`
+  },
+  {
+    id: "extended-stays",
+    title: "Suitable for Short & Extended Stays",
+    subtitle: "Routine & Relaxation",
+    description: "Ideal for guests who value routine and relaxation.",
+    image: roomImg,
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21h8.25M12 3v13.5M4.5 9.75h15" />`
+  },
+  {
+    id: "game-zone",
+    title: "Game Zone",
+    subtitle: "Recreational Fun",
+    description: "A fun and engaging area for guests to unwind and enjoy recreational activities.",
+    image: gameZoneImg,
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0018 4.5H6A2.25 2.25 0 003.75 6.75v11.25A2.25 2.25 0 006 20.25z" />`
+  }
+];
+---
+
+<section id="experiences" class="relative w-full bg-[#fdf9f1] py-20 sm:py-28 overflow-hidden border-t border-[#e8ded0]">
+  
+  <!-- Ambient Soft Gold Glow -->
+  <div class="absolute top-1/3 right-1/4 w-[30rem] h-[30rem] bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20 flex flex-col items-center">
+      
+      <!-- Category Tag with Gold Lines -->
+      <div class="flex items-center gap-4 mb-3">
+        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+        <span class="text-[#1c0c30] text-xs font-bold tracking-[0.3em] uppercase">
+          EXPERIENCES & LEISURE
+        </span>
+        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+      </div>
+
+      <!-- Main Title -->
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl text-[#1c0c30] font-serif font-bold tracking-tight mb-3" style="font-family: 'Cormorant Garamond', serif;">
+        Make Your Stay More Enjoyable
+      </h2>
+
+      <!-- Gold Sparkle Accent -->
+      <div class="text-[#D4A373] text-xl my-1">
+        ✦
+      </div>
+
+      <!-- Description Paragraph -->
+      <p class="text-[#554960] text-sm sm:text-base font-normal leading-relaxed max-w-xl mt-1">
+        Delta Suites is more than just a place to sleep.<br class="hidden sm:inline" />
+        Enjoy leisure facilities designed for guests looking to relax, refresh and spend quality time together.
+      </p>
+
+    </div>
+
+    <!-- OPEN LAYOUT ITEMS GRID WITH SMOOTH VIEW MORE TOGGLE -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 max-w-[1400px] mx-auto mb-14 sm:mb-18">
+      {experiences.map((item, index) => (
+        <div 
+          data-[#experience-open-item]
+          data-experience-open-item
+          class={`group flex flex-col sm:flex-row items-center gap-6 sm:gap-7 ${
+            index >= 4 ? 'hidden' : ''
+          }`}
+        >
+          
+          <!-- Image Frame Showcase -->
+          <div class="w-full sm:w-1/2 aspect-[4/3] rounded-3xl overflow-hidden bg-[#1c0c30]/5 border border-[#e8ded0] shadow-md shrink-0">
+            <Image 
+              src={item.image} 
+              alt={item.title} 
+              class="w-full h-full object-cover transform group-hover:scale-106 transition-transform duration-700 ease-out" 
+              loading="lazy" 
+            />
+          </div>
+
+          <!-- Open Content Stack directly on Canvas -->
+          <div class="w-full sm:w-1/2 flex flex-col justify-center">
+            
+            <!-- Dark Circle Icon Avatar -->
+            <div class="w-12 h-12 rounded-full bg-[#1c0c30] text-white flex items-center justify-center mb-3 shadow-sm group-hover:bg-[#b8860b] transition-colors duration-300 shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <Fragment set:html={item.icon} />
+              </svg>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-[#1c0c30] group-hover:text-[#b8860b] transition-colors leading-tight" style="font-family: 'Cormorant Garamond', serif;">
+              {item.title}
+            </h3>
+
+            <!-- Vertical Accent Line & Description -->
+            <div class="border-l-2 border-[#D4A373] pl-4 my-2.5">
+              {item.subtitle && (
+                <p class="text-[#b8860b] text-xs font-serif italic font-medium mb-0.5">
+                  {item.subtitle}
+                </p>
+              )}
+              <p class="text-[#554960] text-xs sm:text-sm leading-relaxed font-normal">
+                {item.description}
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- INTERACTIVE "VIEW MORE" EXPANDABLE TOGGLE BUTTON -->
+    <div class="flex justify-center pt-2 mb-16">
+      <button 
+        id="toggleOpenExperiencesBtn"
+        class="group bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-4 px-9 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-3 cursor-pointer"
+      >
+        <span id="toggleOpenExperiencesText">VIEW ALL EXPERIENCES (6)</span>
+        <svg id="toggleOpenExperiencesArrow" class="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Bottom Lotus Line Art Ornament Divider -->
+    <div class="flex items-center justify-center gap-5 max-w-4xl mx-auto pt-4">
+      <div class="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#D4A373]/60 to-transparent"></div>
+      <div class="text-[#D4A373] px-2">
+        <svg class="w-9 h-9 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 4c-1.8 3-2.5 5.5-2.5 8s.7 5 2.5 8c1.8-3 2.5-5.5 2.5-8z" />
+          <path d="M12 12c-3.5-2-6.5-2.5-8.5-.5 1.8 3.5 4.5 6 8.5 8.5" />
+          <path d="M12 12c3.5-2 6.5-2.5 8.5-.5-1.8 3.5-4.5 6-8.5 8.5" />
+        </svg>
+      </div>
+      <div class="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#D4A373]/60 to-transparent"></div>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggleOpenExperiencesBtn');
+    const toggleText = document.getElementById('toggleOpenExperiencesText');
+    const toggleArrow = document.getElementById('toggleOpenExperiencesArrow');
+    const hiddenItems = document.querySelectorAll('[data-experience-open-item]');
+
+    let isExpanded = false;
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+
+        hiddenItems.forEach((item, index) => {
+          if (index >= 4) {
+            if (isExpanded) {
+              item.classList.remove('hidden');
+              item.classList.add('animate-fadeIn');
+            } else {
+              item.classList.add('hidden');
+            }
+          }
+        });
+
+        if (isExpanded) {
+          if (toggleText) toggleText.textContent = "SHOW LESS";
+          if (toggleArrow) toggleArrow.style.transform = "rotate(180deg)";
+        } else {
+          if (toggleText) toggleText.textContent = "VIEW ALL EXPERIENCES (6)";
+          if (toggleArrow) toggleArrow.style.transform = "rotate(0deg)";
+        }
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Contact from '../components/Contact.astro';
+import PlanYourStay from '../components/PlanYourStay.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Get in Touch & Location | Delta Suites Beypore">
+  <Header isSolid={true} />
+
+  <!-- Contact Component View -->
+  <main class="bg-[#FAF7F3] pt-12">
+    <Contact />
+  </main>
+  
+  <PlanYourStay />
+  <Footer />
+</Layout>

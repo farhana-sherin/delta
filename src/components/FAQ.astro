@@ -1,0 +1,387 @@
+---
+/**
+ * FAQ Component - Delta Suites
+ * Modern Interactive Split-Spotlight FAQ UI
+ */
+
+const categories = [
+  { id: 'all', label: 'All Questions' },
+  { id: 'stay', label: 'Stay & Location' },
+  { id: 'amenities', label: 'Amenities & Dining' },
+  { id: 'booking', label: 'Policies & Booking' }
+];
+
+const faqs = [
+  {
+    id: "faq-1",
+    category: "stay",
+    categoryLabel: "STAY & LOCATION",
+    question: "Where is Delta Suites located?",
+    answer: "Delta Suites is located in Beypore, Kozhikode, Kerala, offering convenient access to Beypore’s major attractions, historic breakwater, shipbuilding yards, and other parts of Kozhikode.",
+    num: "01",
+    highlights: ["Prime Beypore Location", "Minutes to Beypore Beach", "Easy Access to Kozhikode City"]
+  },
+  {
+    id: "faq-2",
+    category: "booking",
+    categoryLabel: "POLICIES & BOOKING",
+    question: "What time is check-in and check-out?",
+    answer: "Standard Check-in is from 12:00 PM onwards, and Check-out is until 11:00 AM. Early check-in or late check-out options can be requested based on room availability.",
+    num: "02",
+    highlights: ["Check-in: 12:00 PM", "Check-out: 11:00 AM", "Flexible Requests Available"]
+  },
+  {
+    id: "faq-3",
+    category: "amenities",
+    categoryLabel: "AMENITIES & DINING",
+    question: "Does Delta Suites have a swimming pool?",
+    answer: "Yes. Delta Suites features a full-sized adult swimming pool along with a separate dedicated kids pool designed for family leisure and relaxation.",
+    num: "03",
+    highlights: ["Adult Swimming Pool", "Separate Kids Pool", "Sun Loungers Deck"]
+  },
+  {
+    id: "faq-4",
+    category: "amenities",
+    categoryLabel: "AMENITIES & DINING",
+    question: "Does the hotel have a gym?",
+    answer: "Yes. A modern indoor fitness gym equipped with essential cardio and strength training equipment is available for all resident guests.",
+    num: "04",
+    highlights: ["Indoor Fitness Gym", "Cardio Equipment", "Free for Resident Guests"]
+  },
+  {
+    id: "faq-5",
+    category: "amenities",
+    categoryLabel: "AMENITIES & DINING",
+    question: "Does Delta Suites have parking facilities?",
+    answer: "Yes. We provide complimentary secure on-site vehicle parking for all resident hotel guests.",
+    num: "05",
+    highlights: ["Complimentary On-Site Parking", "24/7 Security", "Easy Vehicle Access"]
+  },
+  {
+    id: "faq-6",
+    category: "stay",
+    categoryLabel: "STAY & LOCATION",
+    question: "Is Wi-Fi available throughout the property?",
+    answer: "Yes, complimentary high-speed Wi-Fi access is available for all guests across rooms and public lounge areas.",
+    num: "06",
+    highlights: ["Complimentary High-Speed Wi-Fi", "In-Room & Lounge Coverage", "Work-Friendly Connection"]
+  },
+  {
+    id: "faq-7",
+    category: "amenities",
+    categoryLabel: "AMENITIES & DINING",
+    question: "Does the hotel have an on-site restaurant?",
+    answer: "Yes, guests can enjoy fine multi-cuisine dining facilities at our property's main restaurant serving authentic Malabar seafood and international dishes.",
+    num: "07",
+    highlights: ["Multi-Cuisine Dining", "Authentic Malabar Flavors", "In-Room Dining Service"]
+  },
+  {
+    id: "faq-8",
+    category: "amenities",
+    categoryLabel: "AMENITIES & DINING",
+    question: "Is breakfast available for guests?",
+    answer: "Yes. Complimentary breakfast is included in selected room reservation packages, or can be ordered daily at the restaurant.",
+    num: "08",
+    highlights: ["Included in Select Plans", "Fresh Local & Continental Options", "Daily Buffet / Ala Carte"]
+  },
+  {
+    id: "faq-9",
+    category: "stay",
+    categoryLabel: "STAY & LOCATION",
+    question: "Is Delta Suites suitable for families?",
+    answer: "Yes. The property is specially designed to accommodate leisure and family stays, featuring a swimming pool, separate kids pool, and spacious family suites.",
+    num: "09",
+    highlights: ["Family Friendly Environment", "Separate Kids Pool", "Spacious Family Suites"]
+  },
+  {
+    id: "faq-10",
+    category: "booking",
+    categoryLabel: "POLICIES & BOOKING",
+    question: "How can I book a room at Delta Suites?",
+    answer: "Guests can book directly through the website using the BOOK NOW button, or contact our reservations team via phone or WhatsApp for instant assistance.",
+    num: "10",
+    highlights: ["Direct Website Booking", "WhatsApp Reservations", "Best Rate Guarantee"]
+  }
+];
+---
+
+<section id="faq" class="relative w-full min-h-screen bg-[#FAF7F3] text-[#1c0c30] pt-24 sm:pt-28 lg:pt-36 pb-28 sm:pb-32 lg:pb-8 flex flex-col justify-between overflow-y-auto lg:overflow-hidden border-t border-[#e8ded0]">
+  
+  <!-- Ambient Gold Light Glow -->
+  <div class="absolute top-1/4 left-1/3 w-[36rem] h-[36rem] bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 right-1/4 w-[28rem] h-[28rem] bg-[#1c0c30]/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1240px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col justify-between flex-1">
+    
+    <!-- CENTERED SECTION HEADER -->
+    <div class="shrink-0 text-center flex flex-col items-center justify-center space-y-2 mb-4 border-b border-[#e8ded0] pb-4">
+      <!-- Eyebrow Tag -->
+      <div class="flex items-center justify-center gap-2 mb-0.5">
+        <div class="w-6 h-[1px] bg-[#D4A373]"></div>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
+        <span class="text-[#b8860b] text-[10.5px] font-bold tracking-[0.25em] uppercase">
+          HELP & INFORMATION
+        </span>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
+        <div class="w-6 h-[1px] bg-[#D4A373]"></div>
+      </div>
+
+      <!-- Main Title (Centered) -->
+      <h2 class="text-2xl sm:text-4xl lg:text-4xl font-serif font-bold tracking-tight text-[#1c0c30] leading-[1.1] text-center" style="font-family: 'Cormorant Garamond', serif;">
+        Frequently Asked Questions
+      </h2>
+
+      <!-- Center Filter Category Tabs (Horizontal Scroll on Mobile) -->
+      <div class="w-full pt-2 flex items-center justify-start sm:justify-center gap-2 overflow-x-auto max-w-full pb-1.5 px-1 no-scrollbar">
+        {categories.map((cat, index) => (
+          <button
+            type="button"
+            data-faq-tab={cat.id}
+            class={`faq-tab-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-[10px] sm:text-[10.5px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer border shadow-xs ${
+              index === 0
+                ? 'active-tab bg-[#1c0c30] text-white border-[#1c0c30] shadow-md'
+                : 'bg-white text-[#554960] border-[#EADBCE] hover:border-[#D4A373] hover:text-[#1c0c30] hover:bg-[#FAF5ED]'
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- COMPACT INTERACTIVE SPLIT SPOTLIGHT FAQ STAGE -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 flex-1 items-stretch pb-2">
+      
+      <!-- LEFT COLUMN: QUESTION INDEX LIST (5 cols out of 12) -->
+      <div class="lg:col-span-5 flex flex-col space-y-2 overflow-y-auto max-h-[300px] lg:max-h-[460px] pr-1.5">
+        {faqs.map((item, index) => (
+          <div
+            data-faq-selector
+            data-id={item.id}
+            data-category={item.category}
+            data-num={item.num}
+            data-category-label={item.categoryLabel}
+            data-question={item.question}
+            data-answer={item.answer}
+            data-highlights={JSON.stringify(item.highlights)}
+            class={`faq-select-item group bg-white hover:bg-[#FAF5ED] rounded-xl p-3 border transition-all duration-300 cursor-pointer flex items-center justify-between gap-2.5 ${
+              index === 0
+                ? 'active-faq-select border-[#D4A373] bg-[#FAF5ED] shadow-[0_3px_14px_rgba(212,163,115,0.18)]'
+                : 'border-[#e8ded0]'
+            }`}
+          >
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="text-[#b8860b] text-xs font-serif font-bold shrink-0">
+                {item.num}
+              </span>
+
+              <div class="min-w-0">
+                <span class="text-[8.5px] font-bold text-[#b8860b] uppercase tracking-wider block">
+                  {item.categoryLabel}
+                </span>
+                <h3 class="text-xs sm:text-sm font-serif font-bold text-[#1c0c30] group-hover:text-[#b8860b] transition-colors truncate" style="font-family: 'Cormorant Garamond', serif;">
+                  {item.question}
+                </h3>
+              </div>
+            </div>
+
+            <div class="w-5.5 h-5.5 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#1c0c30] group-hover:bg-[#1c0c30] group-hover:text-white flex items-center justify-center transition-all duration-300 shrink-0">
+              <svg class="w-3 h-3 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- RIGHT COLUMN: FEATURED ANSWER SPOTLIGHT CARD (7 cols out of 12) -->
+      <div class="lg:col-span-7 flex flex-col h-auto lg:h-full">
+        <div 
+          id="faqSpotlightCard"
+          class="relative w-full h-full rounded-[22px] overflow-hidden border border-[#e8ded0] shadow-[0_8px_30px_rgba(0,0,0,0.04)] bg-white p-5 sm:p-6 flex flex-col justify-between transition-all duration-300"
+        >
+          <!-- Top Row Badges -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-3 border-b border-[#f2eae0] pb-2.5">
+              <span id="faqCategoryBadge" class="bg-[#FAF5ED] border border-[#EADBCE] text-[#b8860b] text-[9.5px] font-bold tracking-wider px-2.5 py-0.5 rounded-full uppercase">
+                {faqs[0].categoryLabel}
+              </span>
+
+              <span id="faqNumBadge" class="text-xs font-serif font-bold text-[#1c0c30]">
+                QUESTION {faqs[0].num} / 10
+              </span>
+            </div>
+
+            <!-- Question Title -->
+            <h3 id="faqSpotlightQuestion" class="text-xl sm:text-2xl font-serif font-bold text-[#1c0c30] leading-snug tracking-tight" style="font-family: 'Cormorant Garamond', serif;">
+              {faqs[0].question}
+            </h3>
+
+            <!-- Answer Content Box -->
+            <div class="bg-[#FAF5ED] rounded-xl p-4 border-l-4 border-[#b8860b] space-y-2.5">
+              <p id="faqSpotlightAnswer" class="text-[#554960] text-xs sm:text-sm font-normal leading-relaxed">
+                {faqs[0].answer}
+              </p>
+
+              <!-- Highlights Chips -->
+              <div id="faqSpotlightHighlights" class="flex flex-wrap gap-1.5 pt-0.5">
+                {faqs[0].highlights.map(h => (
+                  <span class="bg-white border border-[#EADBCE] text-[#1c0c30] text-[9.5px] px-2 py-0.5 rounded-md font-semibold flex items-center gap-1 shadow-2xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
+                    <span>{h}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Actions Bar (Cleanly Spaced) -->
+          <div class="pt-3 border-t border-[#f2eae0] mt-3 flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] text-[#554960] font-semibold">Was this answer helpful?</span>
+              <button type="button" class="px-2 py-0.5 text-[9.5px] font-bold bg-white border border-[#e8ded0] hover:bg-[#1c0c30] hover:text-white rounded transition-colors">YES</button>
+              <button type="button" class="px-2 py-0.5 text-[9.5px] font-bold bg-white border border-[#e8ded0] hover:bg-[#1c0c30] hover:text-white rounded transition-colors">NO</button>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <a
+                href="https://wa.me/917907188227"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9.5px] uppercase tracking-wider py-1.5 px-3.5 rounded-full transition-all shadow-xs"
+              >
+                <span>WHATSAPP HELP</span>
+              </a>
+
+              <a
+                href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-[9.5px] uppercase tracking-wider py-1.5 px-3.5 rounded-full transition-all shadow-xs"
+              >
+                <span>BOOK NOW</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll<HTMLButtonElement>('[data-faq-tab]');
+    const selectItems = document.querySelectorAll<HTMLElement>('[data-faq-selector]');
+
+    const qTitle = document.getElementById('faqSpotlightQuestion');
+    const qAnswer = document.getElementById('faqSpotlightAnswer');
+    const qCatBadge = document.getElementById('faqCategoryBadge');
+    const qNumBadge = document.getElementById('faqNumBadge');
+    const qHighlights = document.getElementById('faqSpotlightHighlights');
+
+    const updateSpotlight = (card: HTMLElement) => {
+      const question = card.getAttribute('data-question') || '';
+      const answer = card.getAttribute('data-answer') || '';
+      const catLabel = card.getAttribute('data-category-label') || '';
+      const num = card.getAttribute('data-num') || '';
+      const highlightsRaw = card.getAttribute('data-highlights') || '[]';
+
+      let highlights: string[] = [];
+      try {
+        highlights = JSON.parse(highlightsRaw);
+      } catch (e) {
+        highlights = [];
+      }
+
+      // Highlight active selector card
+      selectItems.forEach(item => {
+        if (item === card) {
+          item.classList.add('active-faq-select', 'border-[#D4A373]', 'bg-[#FAF5ED]', 'shadow-[0_3px_14px_rgba(212,163,115,0.18)]');
+          item.classList.remove('border-[#e8ded0]');
+        } else {
+          item.classList.remove('active-faq-select', 'border-[#D4A373]', 'bg-[#FAF5ED]', 'shadow-[0_3px_14px_rgba(212,163,115,0.18)]');
+          item.classList.add('border-[#e8ded0]');
+        }
+      });
+
+      if (qTitle) {
+        qTitle.style.opacity = '0.3';
+        setTimeout(() => {
+          if (qTitle) qTitle.textContent = question;
+          if (qAnswer) qAnswer.textContent = answer;
+          if (qCatBadge) qCatBadge.textContent = catLabel;
+          if (qNumBadge) qNumBadge.textContent = `QUESTION ${num} / 10`;
+
+          if (qHighlights && highlights.length > 0) {
+            qHighlights.innerHTML = highlights.map(h => `
+              <span class="bg-white border border-[#EADBCE] text-[#1c0c30] text-[9.5px] px-2 py-0.5 rounded-md font-semibold flex items-center gap-1 shadow-2xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
+                <span>${h}</span>
+              </span>
+            `).join('');
+          }
+
+          qTitle.style.opacity = '1';
+        }, 150);
+      }
+    };
+
+    // Category Filter Buttons
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-faq-tab') || 'all';
+
+        tabButtons.forEach(b => {
+          const cat = b.getAttribute('data-faq-tab');
+          if (cat === category) {
+            b.classList.add('active-tab', 'bg-[#1c0c30]', 'text-white', 'border-[#1c0c30]', 'shadow-md');
+            b.classList.remove('bg-white', 'text-[#554960]', 'border-[#EADBCE]');
+          } else {
+            b.classList.remove('active-tab', 'bg-[#1c0c30]', 'text-white', 'border-[#1c0c30]', 'shadow-md');
+            b.classList.add('bg-white', 'text-[#554960]', 'border-[#EADBCE]');
+          }
+        });
+
+        let firstVisible: HTMLElement | null = null;
+
+        selectItems.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (category === 'all' || itemCat === category) {
+            item.style.display = 'flex';
+            if (!firstVisible) firstVisible = item;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (firstVisible) {
+          updateSpotlight(firstVisible);
+        }
+      });
+    });
+
+    // Select Item Click
+    selectItems.forEach(card => {
+      card.addEventListener('click', () => {
+        updateSpotlight(card);
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&display=swap');
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

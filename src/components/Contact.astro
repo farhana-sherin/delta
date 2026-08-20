@@ -1,0 +1,378 @@
+---
+/**
+ * Contact Component - Delta Suites
+ * Premium Contact Section with Inquiry Form & Map
+ */
+
+const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879";
+const MAP_URL = "https://share.google/q5bMAj2sOsHdLRL8y";
+---
+
+<section id="contact" class="relative w-full bg-[#FAF7F3] text-[#1c0c30] py-16 sm:py-24 border-t border-[#e8ded0] overflow-hidden">
+  
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute top-1/3 left-1/4 w-[36rem] h-[36rem] bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 right-1/4 w-[28rem] h-[28rem] bg-[#1c0c30]/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-[1300px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Title & Subheading -->
+    <div class="text-center space-y-3 mb-12 sm:mb-16">
+      <div class="flex items-center justify-center gap-2 mb-1">
+        <div class="w-8 h-[1px] bg-[#D4A373]"></div>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
+        <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase">
+          RESERVATIONS & INQUIRIES
+        </span>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
+        <div class="w-8 h-[1px] bg-[#D4A373]"></div>
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-[#1c0c30]" style="font-family: 'Cormorant Garamond', serif;">
+        Get in Touch
+      </h2>
+
+      <p class="text-[#554960] text-xs sm:text-sm max-w-xl mx-auto font-normal leading-relaxed">
+        Have a question or looking to plan your stay at Delta Suites Beypore? Fill out the inquiry form below or reach out directly to our reservations desk.
+      </p>
+    </div>
+
+    <!-- Main Grid: Info + Map on Left, Form on Right -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      
+      <!-- LEFT COLUMN: Contact Cards & Google Maps -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Contact Info Box -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] space-y-6">
+          <h3 class="text-xl font-serif font-bold text-[#1c0c30] border-b border-[#f2eae0] pb-3" style="font-family: 'Cormorant Garamond', serif;">
+            Contact Information
+          </h3>
+
+          <!-- Location -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#b8860b] flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+              </svg>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-[#b8860b] uppercase tracking-wider block mb-0.5">Location</span>
+              <p class="text-xs sm:text-sm font-medium text-[#1c0c30]">
+                Delta Suites<br />
+                <span class="text-[#554960] font-normal">Beypore, Kozhikode, Kerala, India</span>
+              </p>
+              <a
+                href={MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#b8860b] hover:text-[#1c0c30] underline mt-1.5 transition-colors"
+              >
+                <span>Open in Google Maps</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Phone Numbers -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#b8860b] flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.828-1.424-5.114-3.71-6.538-6.538l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-[#b8860b] uppercase tracking-wider block mb-0.5">Phone</span>
+              <div class="space-y-0.5 text-xs sm:text-sm font-medium text-[#1c0c30]">
+                <a href="tel:+917907188227" class="hover:text-[#b8860b] transition-colors block">+91 79071 88227</a>
+                <a href="tel:+917907310797" class="hover:text-[#b8860b] transition-colors block">+91 79073 10797</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.157 4.228 4.316-1.127z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider block mb-0.5">WhatsApp</span>
+              <a href="https://wa.me/917907188227" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-medium text-[#1c0c30] hover:text-emerald-600 transition-colors block">
+                +91 79071 88227
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#b8860b] flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-[#b8860b] uppercase tracking-wider block mb-0.5">Email</span>
+              <a href="mailto:deltasuites@addonhotels.com" class="text-xs sm:text-sm font-medium text-[#1c0c30] hover:text-[#b8860b] transition-colors block break-all">
+                deltasuites@addonhotels.com
+              </a>
+            </div>
+          </div>
+
+          <!-- Direct Instant Booking Engine Card -->
+          <div class="pt-4 border-t border-[#f2eae0]">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl transition-all duration-300 shadow-md flex items-center justify-center gap-2 group"
+            >
+              <span>INSTANT ROOM RESERVATION</span>
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Google Maps Embed Container -->
+        <div class="bg-white rounded-2xl p-2 border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] overflow-hidden">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.78018260655!2d75.807897!3d11.166948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba6503c5d799999%3A0x892a08889988!2sBeypore%2C%20Kozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            class="w-full h-56 rounded-xl border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Delta Suites Beypore Location Map"
+          ></iframe>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Contact Form -->
+      <div class="lg:col-span-7">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] relative">
+          
+          <h3 class="text-2xl font-serif font-bold text-[#1c0c30] mb-2" style="font-family: 'Cormorant Garamond', serif;">
+            Send Us an Enquiry
+          </h3>
+          <p class="text-xs text-[#554960] mb-6">
+            Fill in your trip details below and our team will get back to you within 24 hours.
+          </p>
+
+          <form id="contactForm" class="space-y-4 sm:space-y-5">
+            <!-- Row 1: Name & Mobile Number -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-name" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  required
+                  placeholder="Your Full Name"
+                  class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all"
+                />
+              </div>
+
+              <div>
+                <label for="contact-mobile" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                  Mobile Number *
+                </label>
+                <input
+                  type="tel"
+                  id="contact-mobile"
+                  name="mobile"
+                  required
+                  placeholder="+91 99999 99999"
+                  class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all"
+                />
+              </div>
+            </div>
+
+            <!-- Row 2: Email & Room Type -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-email" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  required
+                  placeholder="your.email@example.com"
+                  class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all"
+                />
+              </div>
+
+              <div>
+                <label for="contact-room" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                  Room Type *
+                </label>
+                <select
+                  id="contact-room"
+                  name="roomType"
+                  required
+                  class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all"
+                >
+                  <option value="" disabled selected>Select Preferred Room</option>
+                  <option value="Deluxe Room">Deluxe Room</option>
+                  <option value="Executive Suite">Executive Suite</option>
+                  <option value="Family Suite">Family Suite</option>
+                  <option value="Presidential Suite">Presidential Suite</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3: Check-in Date & Check-out Date -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-checkin" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                  Check-in Date *
+                </label>
+                <input
+                  type="date"
+                  id="contact-checkin"
+                  name="checkinDate"
+                  required
+                  class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all"
+                />
+              </div>
+
+              <div>
+                <label for="contact-checkout" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                  Check-out Date *
+                </label>
+                <input
+                  type="date"
+                  id="contact-checkout"
+                  name="checkoutDate"
+                  required
+                  class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all"
+                />
+              </div>
+            </div>
+
+            <!-- Row 4: Number of Adults & Number of Children -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-adults" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                  Number of Adults *
+                </label>
+                <select
+                  id="contact-adults"
+                  name="adults"
+                  required
+                  class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all"
+                >
+                  <option value="1">1 Adult</option>
+                  <option value="2" selected>2 Adults</option>
+                  <option value="3">3 Adults</option>
+                  <option value="4">4 Adults</option>
+                  <option value="5+">5+ Adults</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="contact-children" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                  Number of Children
+                </label>
+                <select
+                  id="contact-children"
+                  name="children"
+                  class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all"
+                >
+                  <option value="0" selected>None</option>
+                  <option value="1">1 Child</option>
+                  <option value="2">2 Children</option>
+                  <option value="3+">3+ Children</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 5: Message -->
+            <div>
+              <label for="contact-message" class="block text-[11px] font-bold text-[#1c0c30] uppercase tracking-wider mb-1.5">
+                Message / Special Requests
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="3"
+                placeholder="Tell us about your trip plans, arrival timing, or any special preferences..."
+                class="w-full bg-[#FAF5ED] border border-[#EADBCE] focus:border-[#b8860b] focus:bg-white text-xs text-[#1c0c30] rounded-xl px-4 py-3 outline-none transition-all resize-none"
+              ></textarea>
+            </div>
+
+            <!-- CTA Button: SEND ENQUIRY -->
+            <div class="pt-2">
+              <button
+                type="submit"
+                id="submitEnquiryBtn"
+                class="w-full bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-4 px-6 rounded-xl transition-all duration-300 shadow-md flex items-center justify-center gap-2 group cursor-pointer"
+              >
+                <span>SEND ENQUIRY</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3 21l18-9L3 3l3 9zm0 0h7.5" />
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Notification Banner -->
+          <div
+            id="formSuccessNotice"
+            class="hidden mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-3"
+          >
+            <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <p class="font-bold">Thank you for your enquiry!</p>
+              <p class="text-[11px] text-emerald-700">Our reservations team at Delta Suites will contact you shortly.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const successNotice = document.getElementById('formSuccessNotice');
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Show instant feedback
+      if (successNotice) {
+        successNotice.classList.remove('hidden');
+      }
+
+      form.reset();
+
+      setTimeout(() => {
+        if (successNotice) {
+          successNotice.classList.add('hidden');
+        }
+      }, 6000);
+    });
+  });
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+</style>
