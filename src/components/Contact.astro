@@ -17,7 +17,7 @@ const MAP_URL = "https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suite
   <div class="max-w-[1300px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Title & Subheading -->
-    <div class="text-center space-y-3 mb-12 sm:mb-16">
+    <div class="text-center space-y-3 mb-12 sm:mb-16 contact-reveal contact-fade-down">
       <div class="flex items-center justify-center gap-2 mb-1">
         <div class="w-8 h-[1px] bg-[#D4A373]"></div>
         <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
@@ -41,7 +41,7 @@ const MAP_URL = "https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suite
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       
       <!-- LEFT COLUMN: Contact Cards & Google Maps -->
-      <div class="lg:col-span-5 space-y-6">
+      <div class="lg:col-span-5 space-y-6 contact-reveal contact-fade-right">
         
         <!-- Contact Info Box -->
         <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] space-y-6">
@@ -155,7 +155,7 @@ const MAP_URL = "https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suite
       </div>
 
       <!-- RIGHT COLUMN: Contact Form -->
-      <div class="lg:col-span-7">
+      <div class="lg:col-span-7 contact-reveal contact-fade-left">
         <div class="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] relative">
           
           <h3 class="text-2xl font-serif font-bold text-[#1c0c30] mb-2" style="font-family: 'Cormorant Garamond', serif;">
@@ -351,6 +351,21 @@ const MAP_URL = "https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suite
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('contact-visible');
+          } else {
+            entry.target.classList.remove('contact-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(contactSection);
+    }
+
     const form = document.getElementById('contactForm') as HTMLFormElement;
     const successNotice = document.getElementById('formSuccessNotice');
 
@@ -375,4 +390,39 @@ const MAP_URL = "https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suite
 
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .contact-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contact-fade-down {
+    transform: translateY(-30px);
+  }
+
+  .contact-fade-left {
+    transform: translateX(40px);
+  }
+
+  .contact-fade-right {
+    transform: translateX(-40px);
+  }
+
+  #contact.contact-visible .contact-fade-down {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #contact.contact-visible .contact-fade-left {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.15s;
+  }
+
+  #contact.contact-visible .contact-fade-right {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.1s;
+  }
 </style>
