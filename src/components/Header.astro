@@ -205,13 +205,6 @@ const { isSolid = false } = Astro.props;
           header.classList.add('bg-[#080210]/98', 'shadow-2xl', 'border-[#D4A373]/30');
           header.classList.remove('bg-[#120524]/95', 'border-white/10');
         }
-        if (topBar) {
-          topBar.style.maxHeight = '0px';
-          topBar.style.opacity = '0';
-          topBar.style.paddingTop = '0px';
-          topBar.style.paddingBottom = '0px';
-          topBar.style.borderBottomWidth = '0px';
-        }
         if (navBar) {
           navBar.classList.remove('py-3', 'md:py-3.5');
           navBar.classList.add('py-2', 'md:py-2.5');
@@ -220,13 +213,6 @@ const { isSolid = false } = Astro.props;
         if (header) {
           header.classList.remove('bg-[#080210]/98', 'shadow-2xl', 'border-[#D4A373]/30');
           header.classList.add('bg-[#120524]/95', 'border-white/10');
-        }
-        if (topBar) {
-          topBar.style.maxHeight = '50px';
-          topBar.style.opacity = '1';
-          topBar.style.paddingTop = '';
-          topBar.style.paddingBottom = '';
-          topBar.style.borderBottomWidth = '';
         }
         if (navBar) {
           navBar.classList.remove('py-2', 'md:py-2.5');
