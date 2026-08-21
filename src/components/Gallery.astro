@@ -137,7 +137,7 @@ const galleryItems = [
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Header -->
-    <div class="max-w-2xl mx-auto text-center mb-10 sm:mb-14 flex flex-col items-center">
+    <div class="max-w-2xl mx-auto text-center mb-10 sm:mb-14 flex flex-col items-center gallery-reveal gallery-fade-down">
       <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase mb-2">
         GALLERY
       </span>
@@ -158,7 +158,7 @@ const galleryItems = [
     </div>
 
     <!-- Category Tabs Navigation -->
-    <div class="mb-10 sm:mb-12">
+    <div class="mb-10 sm:mb-12 gallery-reveal gallery-fade-down">
       <div class="flex items-center justify-start md:justify-center gap-2 overflow-x-auto pb-3 pt-1 px-1 scrollbar-none no-scrollbar">
         {categories.map((cat, index) => (
           <button
@@ -187,7 +187,8 @@ const galleryItems = [
           data-category-name={item.categoryName}
           data-desc={item.description}
           data-image-src={item.image.src}
-          class="gallery-card group bg-white rounded-[24px] p-3.5 border border-[#e8ded0] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(212,163,115,0.18)] hover:border-[#D4A373] transition-all duration-500 cursor-pointer overflow-hidden flex flex-col transform hover:-translate-y-1.5"
+          style={`--stagger-index: ${index % 6};`}
+          class="gallery-reveal gallery-card-stagger gallery-card group bg-white rounded-[24px] p-3.5 border border-[#e8ded0] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(212,163,115,0.18)] hover:border-[#D4A373] transition-all duration-500 cursor-pointer overflow-hidden flex flex-col transform hover:-translate-y-1.5"
         >
           <!-- Image Container with Aspect Ratio -->
           <div class="relative w-full aspect-[4/3] rounded-[18px] overflow-hidden bg-[#1c0c30]/5 mb-3 border border-[#e8ded0]/60">
@@ -243,7 +244,7 @@ const galleryItems = [
     </div>
 
     <!-- CTA Button Container -->
-    <div class="mt-12 sm:mt-16 text-center">
+    <div class="mt-12 sm:mt-16 text-center gallery-reveal gallery-card-stagger" style="--stagger-index: 6;">
       <button
         id="viewFullGalleryBtn"
         type="button"
@@ -352,6 +353,21 @@ const galleryItems = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const gallerySection = document.getElementById('gallery');
+    if (gallerySection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('gallery-visible');
+          } else {
+            entry.target.classList.remove('gallery-visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      observer.observe(gallerySection);
+    }
+
     // Elements
     const tabButtons = document.querySelectorAll<HTMLButtonElement>('[data-gallery-tab]');
     const cards = document.querySelectorAll<HTMLElement>('[data-gallery-item]');
@@ -517,7 +533,6 @@ const galleryItems = [
       filterGallery('all');
       
       // Open Lightbox starting from 0 or scroll smoothly
-      const gallerySection = document.getElementById('gallery');
       gallerySection?.scrollIntoView({ behavior: 'smooth' });
 
       setTimeout(() => {
@@ -532,6 +547,26 @@ const galleryItems = [
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
   
+  .gallery-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .gallery-fade-down { transform: translateY(-30px); }
+  .gallery-card-stagger { transform: translateY(45px); }
+
+  #gallery.gallery-visible .gallery-fade-down {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #gallery.gallery-visible .gallery-card-stagger {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--stagger-index, 0) * 0.12s + 0.15s);
+  }
+
   /* Hide scrollbar for category tabs */
   .no-scrollbar::-webkit-scrollbar {
     display: none;

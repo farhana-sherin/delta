@@ -4,58 +4,73 @@ import bgImage from '../assets/images/bg.webp';
 import waveImage from '../assets/images/star-wave.webp';
 ---
 
-<section class="relative h-screen min-h-[750px] w-full flex items-center overflow-hidden bg-[#16062b] selection:bg-[#D4A373]/30">
-  <!-- Background Image -->
-  <div class="absolute inset-0 z-0">
+<section id="hero-section" class="relative h-screen min-h-[750px] w-full flex items-center overflow-hidden bg-[#16062b] selection:bg-[#D4A373]/30">
+  <!-- Background Image with Ken Burns zoom & Scroll Parallax effect -->
+  <div id="hero-bg-wrapper" class="absolute inset-0 z-0 overflow-hidden transition-transform duration-75 ease-outWillChange">
     <Image 
+      id="hero-bg-img"
       src={bgImage} 
       alt="Hero Background" 
-      class="w-full h-full object-cover object-center"
+      class="w-full h-full object-cover object-center animate-hero-zoom origin-center"
       loading="eager"
       fetchpriority="high"
     />
-    <!-- Subtle gradient overlays for text readability & luxurious dark violet feel -->
+    <!-- Subtle gradient overlays & ambient glow for text readability & luxury dark violet feel -->
     <div class="absolute inset-0 bg-[#210940]/40 mix-blend-overlay"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-[#120524]/90 via-[#120524]/50 to-transparent"></div>
-    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0e031a]/95 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#120524]/95 via-[#120524]/60 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0e031a]/98 to-transparent"></div>
+    <!-- Ambient Gold Glow Spot -->
+    <div class="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#D4A373]/15 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
   </div>
 
   <!-- Main Content Container -->
-  <div class="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 xl:px-10 ">
+  <div id="hero-content" class="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8 xl:px-10 transition-all duration-75 ease-outWillChange">
     
     <div class="max-w-3xl lg:max-w-5xl">
-      <div class="inline-flex flex-col mb-3">
-        <span class="text-[#D4A373] text-[10px] md:text-xs tracking-[0.3em] uppercase font-medium mb-3">
+      <!-- Tagline with staggered entrance -->
+      <div class="inline-flex flex-col mb-4 animate-hero-fade-1">
+        <span class="text-[#D4A373] text-[10px] md:text-xs tracking-[0.35em] uppercase font-medium mb-3 flex items-center gap-2.5">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4A373] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#D4A373]"></span>
+          </span>
           WELCOME TO DELTA SUITES
         </span>
-        <div class="relative w-full h-[1px] bg-[#D4A373]/50 flex items-center justify-center">
-          <div class="absolute w-1.5 h-1.5 rotate-45 bg-[#D4A373]"></div>
+        <div class="relative w-full max-w-md h-[1px] bg-gradient-to-r from-[#D4A373] via-[#D4A373]/60 to-transparent flex items-center justify-start overflow-hidden">
+          <div class="animate-line-expand absolute h-full w-full bg-gradient-to-r from-[#D4A373] via-[#F3E5AB] to-transparent"></div>
+          <div class="absolute w-2 h-2 rotate-45 bg-[#D4A373] shadow-[0_0_10px_#D4A373]"></div>
         </div>
       </div>
 
-      <!-- Main Heading -->
-      <h1 class="text-5xl md:text-[64px] lg:text-[76px] font-serif text-white font-medium leading-[1.1] mb-8 drop-shadow-lg" style="font-family: 'Cormorant Garamond', serif;">
+      <!-- Main Heading with Cormorant Garamond font and gold gradient -->
+      <h1 class="text-5xl md:text-[64px] lg:text-[76px] font-serif text-white font-medium leading-[1.08] mb-8 drop-shadow-2xl animate-hero-fade-2" style="font-family: 'Cormorant Garamond', serif;">
         A Relaxing Stay<br />
         <span class="text-white">in the </span>
-        <span class="text-[#D4A373]">Heart of Beypore</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A373] via-[#f7e3c1] to-[#D4A373]">Heart of Beypore</span>
       </h1>
-      
-
 
       <!-- Subheading -->
-      <p class="text-base md:text-lg text-white/90 font-light mb-10 max-w-xl leading-relaxed tracking-wide drop-shadow-md">
+      <p class="text-base md:text-lg text-white/90 font-light mb-10 max-w-xl leading-relaxed tracking-wide drop-shadow-md animate-hero-fade-3">
         Discover comfort, leisure and warm Kerala hospitality at Delta Suites, Beypore.
       </p>
       
       <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-        <a href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-4 px-8 py-4 border border-[#D4A373] text-[#D4A373] uppercase tracking-[0.2em] text-[11px] font-semibold hover:bg-[#D4A373] hover:text-black transition-all duration-300 backdrop-blur-sm group rounded-full shadow-md">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 animate-hero-fade-4">
+        <a 
+          href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-4 px-8 py-4 border border-[#D4A373] bg-[#D4A373]/10 text-[#D4A373] uppercase tracking-[0.2em] text-[11px] font-semibold hover:bg-[#D4A373] hover:text-black hover:shadow-[0_0_30px_rgba(212,163,115,0.5)] transition-all duration-300 backdrop-blur-sm group rounded-full shadow-lg transform hover:-translate-y-1"
+        >
           BOOK YOUR STAY
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform group-hover:translate-x-1.5 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="/rooms" class="inline-flex items-center gap-4 px-8 py-4 border border-white/50 text-white uppercase tracking-[0.2em] text-[11px] font-semibold hover:bg-white hover:text-black transition-all duration-300 backdrop-blur-sm group rounded-full shadow-md">
+        <a 
+          href="/rooms" 
+          class="inline-flex items-center gap-4 px-8 py-4 border border-white/40 bg-white/5 text-white uppercase tracking-[0.2em] text-[11px] font-semibold hover:bg-white hover:text-black hover:shadow-[0_0_25px_rgba(255,255,255,0.35)] transition-all duration-300 backdrop-blur-sm group rounded-full shadow-lg transform hover:-translate-y-1"
+        >
           EXPLORE ROOMS
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform group-hover:translate-x-1.5 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
@@ -70,16 +85,135 @@ import waveImage from '../assets/images/star-wave.webp';
     </div>
   </div>
 
-  <!-- Bottom Wave Shape & Star from provided Image -->
+  <!-- Bottom Wave Shape & Star from provided Image with gentle float animation -->
   <div class="absolute -bottom-40 md:-bottom-45 left-1/2 -translate-x-1/2 z-20 pointer-events-none w-[130vw] md:w-[110vw] min-w-[1440px] max-w-[1920px] flex justify-center drop-shadow-2xl">
-    <Image 
-      src={waveImage} 
-      alt="Decorative Wave" 
-      class="w-full h-auto object-contain object-bottom"
-    />
+    <div class="w-full flex justify-center animate-subtle-wave-float">
+      <Image 
+        src={waveImage} 
+        alt="Decorative Wave" 
+        class="w-full h-auto object-contain object-bottom"
+      />
+    </div>
   </div>
 </section>
 
+<script is:inline>
+  (function() {
+    var heroBgWrapper = document.getElementById('hero-bg-wrapper');
+    var heroContent = document.getElementById('hero-content');
+    var heroSection = document.getElementById('hero-section');
+
+    function onHeroScroll() {
+      if (!heroSection) return;
+      var scrollY = window.scrollY || window.pageYOffset;
+      var heroHeight = heroSection.offsetHeight || 750;
+
+      if (scrollY <= heroHeight) {
+        var bgTranslate = scrollY * 0.35;
+        var contentTranslate = scrollY * 0.18;
+        var opacityVal = Math.max(0, 1 - (scrollY / (heroHeight * 0.7)));
+
+        if (heroBgWrapper) {
+          heroBgWrapper.style.transform = 'translate3d(0, ' + bgTranslate + 'px, 0)';
+        }
+        if (heroContent) {
+          heroContent.style.transform = 'translate3d(0, ' + contentTranslate + 'px, 0)';
+          heroContent.style.opacity = opacityVal.toString();
+        }
+      }
+    }
+
+    window.addEventListener('scroll', onHeroScroll, { passive: true });
+  })();
+</script>
+
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+  .ease-outWillChange {
+    will-change: transform, opacity;
+  }
+
+  @keyframes heroZoomOut {
+    0% {
+      transform: scale(1.18);
+      filter: brightness(0.85);
+    }
+    100% {
+      transform: scale(1.03);
+      filter: brightness(1);
+    }
+  }
+
+  @keyframes heroFadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes lineExpand {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes subtleWaveFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulseSlow {
+    0%, 100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.65;
+      transform: scale(1.1);
+    }
+  }
+
+  .animate-hero-zoom {
+    animation: heroZoomOut 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-hero-fade-1 {
+    animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
+
+  .animate-hero-fade-2 {
+    animation: heroFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+  }
+
+  .animate-hero-fade-3 {
+    animation: heroFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+  }
+
+  .animate-hero-fade-4 {
+    animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+  }
+
+  .animate-line-expand {
+    animation: lineExpand 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  .animate-subtle-wave-float {
+    animation: subtleWaveFloat 8s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 5s ease-in-out infinite;
+  }
 </style>

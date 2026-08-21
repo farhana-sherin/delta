@@ -50,7 +50,7 @@ const gridFeatures = [
   <div class="max-w-[1320px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- SECTION HEADER -->
-    <div class="max-w-xl mx-auto text-center mb-8 sm:mb-10 space-y-1.5">
+    <div class="max-w-xl mx-auto text-center mb-8 sm:mb-10 space-y-1.5 events-reveal events-fade-down">
       <!-- Eyebrow with Side Lines -->
       <div class="flex items-center justify-center gap-2.5 mb-0.5">
         <div class="w-8 h-[1px] bg-[#D4A373]"></div>
@@ -75,17 +75,17 @@ const gridFeatures = [
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center mb-8">
       
       <!-- LEFT COLUMN: BANQUET IMAGE WITH ENHANCED HEIGHT & OVERLAY CARD -->
-      <div class="lg:col-span-6 relative">
-        <div class="relative w-full h-64 sm:h-76 lg:h-88 rounded-[28px] overflow-hidden border border-[#e8ded0] shadow-[0_8px_30px_rgba(0,0,0,0.04)] bg-[#1c0c30]/5">
+      <div class="lg:col-span-6 relative events-reveal events-fade-left">
+        <div class="relative w-full h-64 sm:h-76 lg:h-88 rounded-[28px] overflow-hidden border border-[#e8ded0] shadow-[0_8px_30px_rgba(0,0,0,0.04)] bg-[#1c0c30]/5 group">
           <Image 
             src={banquetImg} 
             alt="75-Seater Banquet Hall" 
-            class="w-full h-full object-cover" 
+            class="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-700 ease-out" 
             loading="lazy" 
           />
 
           <!-- FLOATING WHITE OVERLAY CARD -->
-          <div class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md rounded-2xl p-3.5 sm:px-5 sm:py-3.5 border border-[#e8ded0] shadow-lg flex items-center gap-3.5 max-w-xs">
+          <div class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md rounded-2xl p-3.5 sm:px-5 sm:py-3.5 border border-[#e8ded0] shadow-lg flex items-center gap-3.5 max-w-xs group-hover:border-[#D4A373] transition-colors duration-300">
             <!-- Left Icon Emblem Circle -->
             <div class="w-10 h-10 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#b8860b] flex items-center justify-center shrink-0 shadow-2xs">
               <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
@@ -107,23 +107,23 @@ const gridFeatures = [
       </div>
 
       <!-- RIGHT COLUMN: 2x3 FEATURE GRID -->
-      <div class="lg:col-span-6 relative">
+      <div class="lg:col-span-6 relative events-reveal events-fade-right">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-5 relative py-2">
           
           {gridFeatures.map((item, index) => (
-            <div class={`flex items-start gap-3.5 p-2 relative ${
+            <div class={`flex items-start gap-3.5 p-2 relative group cursor-pointer ${
               index % 2 === 0 ? 'sm:border-r sm:border-[#e8ded0]/80 sm:pr-5' : 'sm:pl-3'
             }`}>
               <!-- Left Emblem Circle -->
-              <div class="w-11 h-11 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#1c0c30] flex items-center justify-center shrink-0 shadow-2xs mt-0.5">
-                <svg class="w-5 h-5 text-[#554960]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
+              <div class="w-11 h-11 rounded-full bg-[#FAF5ED] border border-[#EADBCE] text-[#1c0c30] group-hover:bg-[#1c0c30] group-hover:text-white group-hover:border-[#b8860b] transition-all duration-300 flex items-center justify-center shrink-0 shadow-2xs mt-0.5">
+                <svg class="w-5 h-5 text-[#554960] group-hover:text-[#D4A373] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6">
                   <Fragment set:html={item.icon} />
                 </svg>
               </div>
 
               <!-- Title & Subtitle Stack -->
               <div class="space-y-0.5 min-w-0">
-                <h3 class="text-sm sm:text-base font-bold text-[#1c0c30] leading-tight truncate">
+                <h3 class="text-sm sm:text-base font-bold text-[#1c0c30] group-hover:text-[#b8860b] transition-colors leading-tight truncate">
                   {item.title}
                 </h3>
                 <p class="text-[#6b5c77] text-xs font-normal leading-tight">
@@ -147,7 +147,7 @@ const gridFeatures = [
     </div>
 
     <!-- BOTTOM CALLOUT STATEMENT (NO BOX, BIG CAPITAL LETTERS) -->
-    <div class="mt-10 sm:mt-14 pt-8 border-t border-[#e8ded0] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+    <div class="mt-10 sm:mt-14 pt-8 border-t border-[#e8ded0] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left events-reveal events-fade-up">
       
       <!-- Text Stack -->
       <div class="space-y-1 max-w-2xl">
@@ -182,6 +182,44 @@ const gridFeatures = [
   </div>
 </section>
 
+<script is:inline>
+  (function() {
+    var section = document.getElementById('meetings-events');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('events-visible');
+        } else {
+          entry.target.classList.remove('events-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
+  })();
+</script>
+
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .events-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .events-fade-down { transform: translateY(-30px); }
+  .events-fade-left { transform: translateX(-40px); transition-delay: 0.15s; }
+  .events-fade-right { transform: translateX(40px); transition-delay: 0.3s; }
+  .events-fade-up { transform: translateY(35px); transition-delay: 0.45s; }
+
+  #meetings-events.events-visible .events-fade-down,
+  #meetings-events.events-visible .events-fade-left,
+  #meetings-events.events-visible .events-fade-right,
+  #meetings-events.events-visible .events-fade-up {
+    opacity: 1;
+    transform: translate(0);
+  }
 </style>

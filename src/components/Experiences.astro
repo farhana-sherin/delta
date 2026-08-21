@@ -72,7 +72,7 @@ const experiences = [
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Header -->
-    <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20 flex flex-col items-center">
+    <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20 flex flex-col items-center exp-reveal exp-fade-down">
       
       <!-- Category Tag with Gold Lines -->
       <div class="flex items-center gap-4 mb-3">
@@ -105,9 +105,9 @@ const experiences = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 max-w-[1400px] mx-auto mb-14 sm:mb-18">
       {experiences.map((item, index) => (
         <div 
-          data-[#experience-open-item]
           data-experience-open-item
-          class={`group flex flex-col sm:flex-row items-center gap-6 sm:gap-7 ${
+          style={`--stagger-index: ${index};`}
+          class={`exp-reveal exp-card-stagger group flex flex-col sm:flex-row items-center gap-6 sm:gap-7 ${
             index >= 4 ? 'hidden' : ''
           }`}
         >
@@ -117,7 +117,7 @@ const experiences = [
             <Image 
               src={item.image} 
               alt={item.title} 
-              class="w-full h-full object-cover transform group-hover:scale-106 transition-transform duration-700 ease-out" 
+              class="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-700 ease-out" 
               loading="lazy" 
             />
           </div>
@@ -127,7 +127,7 @@ const experiences = [
             
             <!-- Dark Circle Icon Avatar -->
             <div class="w-12 h-12 rounded-full bg-[#1c0c30] text-white flex items-center justify-center mb-3 shadow-sm group-hover:bg-[#b8860b] transition-colors duration-300 shrink-0">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+              <svg class="w-6 h-6 text-[#D4A373] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                 <Fragment set:html={item.icon} />
               </svg>
             </div>
@@ -156,10 +156,10 @@ const experiences = [
     </div>
 
     <!-- INTERACTIVE "VIEW MORE" EXPANDABLE TOGGLE BUTTON -->
-    <div class="flex justify-center pt-2 mb-16">
+    <div class="flex justify-center pt-2 mb-16 exp-reveal exp-card-stagger" style="--stagger-index: 5;">
       <button 
         id="toggleOpenExperiencesBtn"
-        class="group bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-4 px-9 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-3 cursor-pointer"
+        class="group bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-4 px-9 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-3 cursor-pointer transform hover:-translate-y-0.5"
       >
         <span id="toggleOpenExperiencesText">VIEW ALL EXPERIENCES (6)</span>
         <svg id="toggleOpenExperiencesArrow" class="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -187,6 +187,21 @@ const experiences = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const expSection = document.getElementById('experiences');
+    if (expSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('exp-visible');
+          } else {
+            entry.target.classList.remove('exp-visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      observer.observe(expSection);
+    }
+
     const toggleBtn = document.getElementById('toggleOpenExperiencesBtn');
     const toggleText = document.getElementById('toggleOpenExperiencesText');
     const toggleArrow = document.getElementById('toggleOpenExperiencesArrow');
@@ -223,6 +238,26 @@ const experiences = [
 
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .exp-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .exp-fade-down { transform: translateY(-30px); }
+  .exp-card-stagger { transform: translateY(45px); }
+
+  #experiences.exp-visible .exp-fade-down {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #experiences.exp-visible .exp-card-stagger {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--stagger-index, 0) * 0.15s + 0.15s);
+  }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

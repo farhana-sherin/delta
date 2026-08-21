@@ -85,7 +85,7 @@ const whyStayReasons = [
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
       
       <!-- LEFT COLUMN: Compact Header & Photo Frame (5 cols out of 12) -->
-      <div class="lg:col-span-5 flex flex-col justify-between py-1">
+      <div class="lg:col-span-5 flex flex-col justify-between py-1 why-reveal why-fade-left">
         
         <!-- Header Text -->
         <div class="mb-3">
@@ -113,7 +113,7 @@ const whyStayReasons = [
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-[10px] uppercase tracking-[0.18em] py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-lg group cursor-pointer"
+            class="inline-flex items-center gap-2 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-[10px] uppercase tracking-[0.18em] py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-lg group cursor-pointer transform hover:-translate-y-0.5"
           >
             <span>RESERVE YOUR SUITE</span>
             <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
@@ -127,7 +127,7 @@ const whyStayReasons = [
           <Image 
             src={luxuryRoomImg} 
             alt="Delta Suites Luxury Room Experience" 
-            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" 
+            class="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-700 ease-out" 
             loading="lazy" 
           />
           
@@ -149,8 +149,11 @@ const whyStayReasons = [
 
       <!-- RIGHT COLUMN: 6 Compact Feature Cards (7 cols out of 12) -->
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-4.5">
-        {whyStayReasons.map((item) => (
-          <div class="group bg-white rounded-2xl p-4.5 sm:p-5 border border-[#e8ded0]/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between cursor-pointer min-h-[160px] relative overflow-hidden">
+        {whyStayReasons.map((item, index) => (
+          <div 
+            style={`--stagger-index: ${index};`}
+            class="why-reveal why-card-stagger group bg-white rounded-2xl p-4.5 sm:p-5 border border-[#e8ded0]/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between cursor-pointer min-h-[160px] relative overflow-hidden"
+          >
             
             <div>
               <!-- Top Row: Circle Avatar & Number -->
@@ -186,3 +189,46 @@ const whyStayReasons = [
   </div>
 
 </section>
+
+<script is:inline>
+  (function() {
+    var section = document.getElementById('why-stay');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('why-visible');
+        } else {
+          entry.target.classList.remove('why-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
+  })();
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .why-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .why-fade-left { transform: translateX(-40px); }
+  .why-card-stagger { transform: translateY(45px); }
+
+  #why-stay.why-visible .why-fade-left {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  #why-stay.why-visible .why-card-stagger {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--stagger-index, 0) * 0.14s + 0.15s);
+  }
+</style>

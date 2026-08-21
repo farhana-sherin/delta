@@ -26,7 +26,7 @@ const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&nu
   <!-- Ambient Gold Light Glow -->
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[15rem] bg-[#D4A373]/15 rounded-full filter blur-3xl pointer-events-none"></div>
 
-  <div class="max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-3.5">
+  <div class="max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-3.5 plan-reveal plan-fade-up">
     
     <!-- Gold Eyebrow Badge -->
     <div class="inline-flex items-center gap-2.5 bg-white/5 border border-[#D4A373]/30 backdrop-blur-md px-4 py-1.5 rounded-full shadow-xs">
@@ -54,7 +54,7 @@ const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&nu
         href={BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="group w-full sm:w-auto bg-[#b8860b] hover:bg-[#D4A373] text-white font-bold text-[11px] uppercase tracking-[0.18em] py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center justify-center gap-2.5 cursor-pointer"
+        class="group w-full sm:w-auto bg-[#b8860b] hover:bg-[#D4A373] text-white font-bold text-[11px] uppercase tracking-[0.18em] py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center justify-center gap-2.5 cursor-pointer transform hover:-translate-y-0.5"
       >
         <span>BOOK YOUR STAY NOW</span>
         <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -65,7 +65,7 @@ const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&nu
       <!-- Secondary Outline Button -->
       <a 
         href="/contact"
-        class="group w-full sm:w-auto bg-white/5 hover:bg-white text-white hover:text-[#120524] border border-white/30 font-bold text-[11px] uppercase tracking-[0.18em] py-3 px-7 rounded-full transition-all duration-300 backdrop-blur-md inline-flex items-center justify-center gap-2 cursor-pointer"
+        class="group w-full sm:w-auto bg-white/5 hover:bg-white text-white hover:text-[#120524] border border-white/30 font-bold text-[11px] uppercase tracking-[0.18em] py-3 px-7 rounded-full transition-all duration-300 backdrop-blur-md inline-flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5"
       >
         <span>GET IN TOUCH</span>
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -77,6 +77,38 @@ const BOOKING_URL = "https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&nu
   </div>
 </section>
 
+<script is:inline>
+  (function() {
+    var section = document.getElementById('plan-your-stay');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('plan-visible');
+        } else {
+          entry.target.classList.remove('plan-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
+  })();
+</script>
+
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .plan-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .plan-fade-up { transform: translateY(40px); }
+
+  #plan-your-stay.plan-visible .plan-fade-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>

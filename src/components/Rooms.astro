@@ -76,7 +76,7 @@ const roomCategories = [
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Header -->
-    <div class="max-w-xl mx-auto text-center mb-12 sm:mb-16 flex flex-col items-center">
+    <div class="max-w-xl mx-auto text-center mb-12 sm:mb-16 flex flex-col items-center rooms-reveal rooms-fade-down">
       <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase mb-2">
         STAY YOUR WAY
       </span>
@@ -98,7 +98,7 @@ const roomCategories = [
 
     <!-- ROOM CARDS MATCHING REFERENCE UI LAYOUT -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-[1400px] mx-auto">
-      {roomCategories.map((room) => (
+      {roomCategories.map((room, index) => (
         <div 
           data-room-card
           data-room-id={room.id}
@@ -106,7 +106,8 @@ const roomCategories = [
           data-room-desc={room.shortDesc}
           data-room-amenities={JSON.stringify(room.amenities)}
           data-room-image={room.image.src}
-          class="group bg-white rounded-[32px] p-6 sm:p-7 border border-[#e8ded0] shadow-[0_8px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(212,163,115,0.2)] hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden relative cursor-pointer"
+          style={`--stagger-index: ${index};`}
+          class="rooms-reveal rooms-card-stagger group bg-white rounded-[32px] p-6 sm:p-7 border border-[#e8ded0] shadow-[0_8px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(212,163,115,0.2)] hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden relative cursor-pointer"
         >
           <div>
             <!-- Top Image Showcase -->
@@ -179,7 +180,7 @@ const roomCategories = [
               </button>
 
               <a 
-                href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879" 
+                href={BOOKING_URL} 
                 target="_blank"
                 rel="noopener noreferrer"
                 class="flex-1 bg-[#1c0c30] hover:bg-[#b8860b] text-white border border-[#1c0c30] hover:border-[#b8860b] font-bold text-[11px] uppercase tracking-wider py-3 px-3 rounded-xl transition-all duration-300 text-center cursor-pointer shadow-xs hover:shadow-md inline-flex items-center justify-center gap-1"
@@ -276,6 +277,21 @@ const roomCategories = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const roomsSection = document.getElementById('rooms');
+    if (roomsSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('rooms-visible');
+          } else {
+            entry.target.classList.remove('rooms-visible');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      observer.observe(roomsSection);
+    }
+
     const modal = document.getElementById('roomModal');
     const modalContent = document.getElementById('roomModalContent');
     const closeBtn = document.getElementById('closeRoomModal');
@@ -363,4 +379,29 @@ const roomCategories = [
 
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .rooms-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .rooms-fade-down {
+    transform: translateY(-30px);
+  }
+
+  .rooms-card-stagger {
+    transform: translateY(50px);
+  }
+
+  #rooms.rooms-visible .rooms-fade-down {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #rooms.rooms-visible .rooms-card-stagger {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--stagger-index, 0) * 0.18s + 0.15s);
+  }
 </style>

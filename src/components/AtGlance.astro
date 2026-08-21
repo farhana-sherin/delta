@@ -61,7 +61,7 @@ const features = [
 ];
 ---
 
-<section class="relative w-full bg-[#fdf9f1] py-10 sm:py-14 overflow-hidden">
+<section id="at-a-glance-section" class="relative w-full bg-[#fdf9f1] py-12 sm:py-16 overflow-hidden">
   
   <!-- Subtle Background Accents -->
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full bg-[#D4A373]/5 pointer-events-none filter blur-3xl"></div>
@@ -69,72 +69,76 @@ const features = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
     
     <!-- Header Text (Matching Reference Image) -->
-    <div class="mb-8 sm:mb-12 flex flex-col items-center">
-      <span class="text-[#b8860b] font-serif font-bold text-sm sm:text-base tracking-wider uppercase mb-1" style="font-family: 'Cormorant Garamond', serif;">
+    <div class="mb-10 sm:mb-14 flex flex-col items-center glance-reveal glance-fade-down">
+      <span class="text-[#b8860b] font-serif font-bold text-sm sm:text-base tracking-widest uppercase mb-1.5" style="font-family: 'Cormorant Garamond', serif;">
         Beypore, Kozhikode.
       </span>
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl text-[#1c0c30] font-serif font-bold tracking-tight" style="font-family: 'Cormorant Garamond', serif;">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl text-[#1c0c30] font-serif font-bold tracking-wider" style="font-family: 'Cormorant Garamond', serif;">
         AT A GLANCE
       </h2>
-      <div class="flex items-center gap-2 justify-center mt-2">
-        <div class="w-8 h-[1px] bg-[#D4A373]/70"></div>
-        <div class="w-1.5 h-1.5 rotate-45 bg-[#D4A373]"></div>
-        <div class="w-8 h-[1px] bg-[#D4A373]/70"></div>
+      <div class="flex items-center gap-2 justify-center mt-3">
+        <div class="w-10 h-[1px] bg-gradient-to-r from-transparent via-[#D4A373] to-[#D4A373]"></div>
+        <div class="w-2 h-2 rotate-45 bg-[#D4A373] shadow-[0_0_8px_rgba(212,163,115,0.8)]"></div>
+        <div class="w-10 h-[1px] bg-gradient-to-l from-transparent via-[#D4A373] to-[#D4A373]"></div>
       </div>
     </div>
 
     <!-- 7 Amenity Image Cards Grid (Exact Match to Reference Design) -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-5 lg:gap-4 items-start">
-      {features.map((feature) => (
-        <div class="group flex flex-col items-center text-center cursor-pointer">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-6 lg:gap-4 items-start">
+      {features.map((feature, index) => (
+        <div 
+          class={`glance-reveal glance-card-stagger group flex flex-col items-center text-center cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300`}
+          style={`--stagger-index: ${index};`}
+        >
           
           <!-- Image Box Container with Floating Icon Badge -->
-          <div class="relative w-full aspect-square rounded-2xl overflow-visible mb-6 shadow-md group-hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full aspect-square rounded-2xl overflow-visible mb-6 shadow-md group-hover:shadow-2xl transition-all duration-300">
             
             <!-- Rounded Card Image -->
-            <div class="w-full h-full rounded-2xl overflow-hidden border border-[#e2d5c3]">
+            <div class="w-full h-full rounded-2xl overflow-hidden border border-[#e2d5c3] group-hover:border-[#D4A373] transition-colors duration-300">
               <Image 
                 src={feature.image} 
                 alt={`${feature.line1} ${feature.line2}`} 
-                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out" 
                 loading="lazy"
               />
+              <div class="absolute inset-0 bg-[#1c0c30]/0 group-hover:bg-[#1c0c30]/10 transition-colors duration-300 pointer-events-none"></div>
             </div>
 
             <!-- Overlapping Circular Dark Icon Badge at Bottom Center -->
-            <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#1c0c30] border-2 border-[#D4A373]/80 text-[#D4A373] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#D4A373] group-hover:text-[#1c0c30] transition-all duration-300 z-10">
+            <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#1c0c30] border-2 border-[#D4A373]/80 text-[#D4A373] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#D4A373] group-hover:text-[#1c0c30] group-hover:shadow-[0_0_20px_rgba(212,163,115,0.6)] transition-all duration-300 z-10">
               {feature.icon === 'bed' && (
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:rotate-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v11m0-4h18m0 4v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v2m4-6h3a1 1 0 001-1V7a1 1 0 00-1-1H7a1 1 0 00-1 1v1a1 1 0 001 1zm8 0h3a1 1 0 001-1V7a1 1 0 00-1-1h-3a1 1 0 00-1 1v1a1 1 0 001 1z" />
                 </svg>
               )}
               {feature.icon === 'room' && (
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:rotate-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v16H4V4zm8 0v16M4 12h16M8 12v4m8-8v4" />
                 </svg>
               )}
               {feature.icon === 'restaurant' && (
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:rotate-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4a1 1 0 100 2 1 1 0 000-2zm0 2a8 8 0 00-8 8h16a8 8 0 00-8-8zm-9 11h18" />
                 </svg>
               )}
               {feature.icon === 'pool' && (
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:rotate-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 17c1.5 0 2.25-.5 3-.5s1.5.5 3 .5 2.25-.5 3-.5 1.5.5 3 .5 2.25-.5 3-.5m-18 3c1.5 0 2.25-.5 3-.5s1.5.5 3 .5 2.25-.5 3-.5 1.5.5 3 .5 2.25-.5 3-.5M15 5a2 2 0 100-4 2 2 0 000 4zm2.5 5.5l-3.5-2.5-3 2 1.5 3.5 3-1.5" />
                 </svg>
               )}
               {feature.icon === 'fitness' && (
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:rotate-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 10v4m2-5v6m2-7v8m8-8v8m2-7v6m2-5v4M10 12h4" />
                 </svg>
               )}
               {feature.icon === 'banquet' && (
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:rotate-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M6 14h12M8 18h8M9 21h6" />
                 </svg>
               )}
               {feature.icon === 'game' && (
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:rotate-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 11h4m-2-2v4m7-2h.01m2.99 0h.01M6.5 17h11a2.5 2.5 0 002.45-2.02l.8-4.5A2.5 2.5 0 0018.3 7.5H5.7a2.5 2.5 0 00-2.45 2.98l.8 4.5A2.5 2.5 0 006.5 17z" />
                 </svg>
               )}
@@ -158,7 +162,7 @@ const features = [
           </div>
 
           <!-- Gold Dash Accent below text -->
-          <div class="w-5 h-[2px] bg-[#D4A373]/60 rounded-full mt-2.5 group-hover:w-8 group-hover:bg-[#D4A373] transition-all duration-300"></div>
+          <div class="w-5 h-[2px] bg-[#D4A373]/60 rounded-full mt-2.5 group-hover:w-10 group-hover:bg-[#b8860b] transition-all duration-300"></div>
 
         </div>
       ))}
@@ -167,6 +171,50 @@ const features = [
   </div>
 </section>
 
+<script is:inline>
+  (function() {
+    var section = document.getElementById('at-a-glance-section');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('glance-visible');
+        } else {
+          entry.target.classList.remove('glance-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
+  })();
+</script>
+
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .glance-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .glance-fade-down {
+    transform: translateY(-30px);
+  }
+
+  .glance-card-stagger {
+    transform: translateY(45px);
+  }
+
+  #at-a-glance-section.glance-visible .glance-fade-down {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #at-a-glance-section.glance-visible .glance-card-stagger {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--stagger-index, 0) * 0.15s + 0.15s);
+  }
 </style>

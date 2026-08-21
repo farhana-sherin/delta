@@ -14,11 +14,11 @@ import hotelImage from '../assets/images/flat.webp';
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
       
       <!-- Left Column: Narrative & Amenities (7 Cols) -->
-      <div class="lg:col-span-7 space-y-6 text-left">
+      <div class="lg:col-span-7 space-y-6 text-left about-reveal about-fade-left">
         
         <!-- Eyebrow Tag -->
         <div class="flex items-center gap-3">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-[#b8860b] shrink-0">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-[#b8860b] shrink-0 animate-spin-slow">
             <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"/>
           </svg>
           <div class="w-10 h-[1px] bg-[#D4A373]/60"></div>
@@ -34,8 +34,9 @@ import hotelImage from '../assets/images/flat.webp';
 
         <!-- Gold Accent Line with Diamond -->
         <div class="flex items-center gap-2.5 py-0.5">
-          <div class="w-10 h-[1px] bg-[#D4A373]"></div>
-          <div class="w-1.5 h-1.5 rotate-45 bg-[#D4A373]"></div>
+          <div class="w-12 h-[1px] bg-gradient-to-r from-[#D4A373] to-transparent"></div>
+          <div class="w-2 h-2 rotate-45 bg-[#D4A373] shadow-[0_0_8px_rgba(212,163,115,0.8)]"></div>
+          <div class="w-12 h-[1px] bg-gradient-to-l from-[#D4A373] to-transparent"></div>
         </div>
 
         <!-- Narrative Paragraphs -->
@@ -52,54 +53,54 @@ import hotelImage from '../assets/images/flat.webp';
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#e8ded0]">
           
           <!-- Item 1: 31 Rooms -->
-          <div class="flex items-center gap-3 border-r border-[#e5dad0] pr-2 last:border-r-0">
-            <div class="w-10 h-10 rounded-lg bg-[#f4ebd9] border border-[#e2d5c3] flex items-center justify-center text-[#b8860b] shrink-0">
+          <div class="about-reveal about-stagger-1 flex items-center gap-3 border-r border-[#e5dad0] pr-2 last:border-r-0 group cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-[#f4ebd9] border border-[#e2d5c3] flex items-center justify-center text-[#b8860b] group-hover:bg-[#D4A373] group-hover:text-[#1c0c30] group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(212,163,115,0.5)] transition-all duration-300 shrink-0">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v11m0-4h18m0 4v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v2m4-6h3a1 1 0 001-1V7a1 1 0 00-1-1H7a1 1 0 00-1 1v1a1 1 0 001 1zm8 0h3a1 1 0 001-1V7a1 1 0 00-1-1h-3a1 1 0 00-1 1v1a1 1 0 001 1z" />
               </svg>
             </div>
             <div class="flex flex-col text-left">
-              <span class="text-[#1c0c30] text-sm font-bold font-serif" style="font-family: 'Cormorant Garamond', serif;">31</span>
+              <span class="text-[#1c0c30] text-sm font-bold font-serif group-hover:text-[#b8860b] transition-colors" style="font-family: 'Cormorant Garamond', serif;">31</span>
               <span class="text-[#867595] text-[9.5px] font-bold uppercase tracking-wider">ROOMS</span>
             </div>
           </div>
 
           <!-- Item 2: Pool & Gym -->
-          <div class="flex items-center gap-3 border-r border-[#e5dad0] pr-2 sm:last:border-r-0">
-            <div class="w-10 h-10 rounded-lg bg-[#f4ebd9] border border-[#e2d5c3] flex items-center justify-center text-[#b8860b] shrink-0">
+          <div class="about-reveal about-stagger-2 flex items-center gap-3 border-r border-[#e5dad0] pr-2 sm:last:border-r-0 group cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-[#f4ebd9] border border-[#e2d5c3] flex items-center justify-center text-[#b8860b] group-hover:bg-[#D4A373] group-hover:text-[#1c0c30] group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(212,163,115,0.5)] transition-all duration-300 shrink-0">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 17c1.5 0 2.25-.5 3-.5s1.5.5 3 .5 2.25-.5 3-.5 1.5.5 3 .5 2.25-.5 3-.5m-18 3c1.5 0 2.25-.5 3-.5s1.5.5 3 .5 2.25-.5 3-.5 1.5.5 3 .5 2.25-.5 3-.5M15 5a2 2 0 100-4 2 2 0 000 4zm2.5 5.5l-3.5-2.5-3 2 1.5 3.5 3-1.5" />
               </svg>
             </div>
             <div class="flex flex-col text-left">
-              <span class="text-[#1c0c30] text-xs font-bold uppercase tracking-wider">POOL &</span>
+              <span class="text-[#1c0c30] text-xs font-bold uppercase tracking-wider group-hover:text-[#b8860b] transition-colors">POOL &</span>
               <span class="text-[#867595] text-[9.5px] font-bold uppercase tracking-wider">GYM</span>
             </div>
           </div>
 
           <!-- Item 3: Dining Facilities -->
-          <div class="flex items-center gap-3 border-r border-[#e5dad0] pr-2 last:border-r-0">
-            <div class="w-10 h-10 rounded-lg bg-[#f4ebd9] border border-[#e2d5c3] flex items-center justify-center text-[#b8860b] shrink-0">
+          <div class="about-reveal about-stagger-3 flex items-center gap-3 border-r border-[#e5dad0] pr-2 last:border-r-0 group cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-[#f4ebd9] border border-[#e2d5c3] flex items-center justify-center text-[#b8860b] group-hover:bg-[#D4A373] group-hover:text-[#1c0c30] group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(212,163,115,0.5)] transition-all duration-300 shrink-0">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4a1 1 0 100 2 1 1 0 000-2zm0 2a8 8 0 00-8 8h16a8 8 0 00-8-8zm-9 11h18" />
               </svg>
             </div>
             <div class="flex flex-col text-left">
-              <span class="text-[#1c0c30] text-xs font-bold uppercase tracking-wider">DINING</span>
+              <span class="text-[#1c0c30] text-xs font-bold uppercase tracking-wider group-hover:text-[#b8860b] transition-colors">DINING</span>
               <span class="text-[#867595] text-[9.5px] font-bold uppercase tracking-wider">FACILITIES</span>
             </div>
           </div>
 
           <!-- Item 4: Heart of Beypore -->
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg bg-[#f4ebd9] border border-[#e2d5c3] flex items-center justify-center text-[#b8860b] shrink-0">
+          <div class="about-reveal about-stagger-4 flex items-center gap-3 group cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-[#f4ebd9] border border-[#e2d5c3] flex items-center justify-center text-[#b8860b] group-hover:bg-[#D4A373] group-hover:text-[#1c0c30] group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(212,163,115,0.5)] transition-all duration-300 shrink-0">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
               </svg>
             </div>
             <div class="flex flex-col text-left">
-              <span class="text-[#1c0c30] text-xs font-bold uppercase tracking-wider">HEART OF</span>
+              <span class="text-[#1c0c30] text-xs font-bold uppercase tracking-wider group-hover:text-[#b8860b] transition-colors">HEART OF</span>
               <span class="text-[#867595] text-[9.5px] font-bold uppercase tracking-wider">BEYPORE</span>
             </div>
           </div>
@@ -108,9 +109,9 @@ import hotelImage from '../assets/images/flat.webp';
 
         <!-- CTA Button -->
         <div class="pt-4">
-          <a href="#" class="inline-flex items-center gap-3 bg-[#D4A373] text-[#1c0c30] px-8 py-3.5 rounded-xl hover:bg-[#1c0c30] hover:text-white transition-all duration-300 font-bold tracking-wider text-xs uppercase shadow-lg group">
+          <a href="/rooms" class="inline-flex items-center gap-3 bg-[#D4A373] text-[#1c0c30] px-8 py-3.5 rounded-xl hover:bg-[#1c0c30] hover:text-white hover:shadow-[0_0_25px_rgba(212,163,115,0.4)] transition-all duration-300 font-bold tracking-wider text-xs uppercase shadow-lg group transform hover:-translate-y-0.5">
             <span>EXPLORE DELTA SUITES</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="stroke-current transform group-hover:translate-x-1 transition-transform duration-300">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="stroke-current transform group-hover:translate-x-1.5 transition-transform duration-300">
               <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
@@ -119,23 +120,23 @@ import hotelImage from '../assets/images/flat.webp';
       </div>
 
       <!-- Right Column: Massive Rounded Hotel Image (5 Cols) -->
-      <div class="lg:col-span-5 relative h-full flex items-center">
-        <div class="relative w-full h-[360px] sm:h-[420px] lg:h-[450px] rounded-3xl overflow-hidden shadow-xl border border-[#e8ded0] group">
+      <div class="lg:col-span-5 relative h-full flex items-center about-reveal about-fade-right">
+        <div class="relative w-full h-[360px] sm:h-[420px] lg:h-[450px] rounded-3xl overflow-hidden shadow-2xl border border-[#e8ded0] group hover:border-[#D4A373] transition-colors duration-500">
           <Image 
             src={hotelImage} 
             alt="Delta Suites Hotel External View" 
-            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+            class="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-700 ease-out" 
             loading="lazy" 
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
 
           <!-- Floating Overlay Badge at Bottom Right -->
-          <div class="absolute bottom-5 right-5 bg-[#1c0c30]/90 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 text-white flex items-center gap-2 shadow-xl">
-            <svg class="w-4 h-4 text-[#D4A373]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="absolute bottom-5 right-5 bg-[#1c0c30]/90 backdrop-blur-md border border-[#D4A373]/40 rounded-xl px-4 py-2.5 text-white flex items-center gap-2.5 shadow-2xl group-hover:border-[#D4A373] group-hover:scale-105 transition-all duration-300">
+            <svg class="w-4 h-4 text-[#D4A373] animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
-            <span class="text-xs font-semibold tracking-wide">Beypore, Kozhikode</span>
+            <span class="text-xs font-semibold tracking-wide text-[#f7e3c1]">Beypore, Kozhikode</span>
           </div>
 
         </div>
@@ -146,6 +147,76 @@ import hotelImage from '../assets/images/flat.webp';
   </div>
 </section>
 
+<script is:inline>
+  (function() {
+    var section = document.getElementById('about');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('about-visible');
+        } else {
+          entry.target.classList.remove('about-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
+  })();
+</script>
+
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .about-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .about-fade-left {
+    transform: translateX(-40px);
+  }
+
+  .about-fade-right {
+    transform: translateX(40px);
+  }
+
+  .about-stagger-1 { transform: translateY(25px); transition-delay: 0.2s; }
+  .about-stagger-2 { transform: translateY(25px); transition-delay: 0.35s; }
+  .about-stagger-3 { transform: translateY(25px); transition-delay: 0.5s; }
+  .about-stagger-4 { transform: translateY(25px); transition-delay: 0.65s; }
+
+  #about.about-visible .about-fade-left,
+  #about.about-visible .about-fade-right {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  #about.about-visible .about-stagger-1,
+  #about.about-visible .about-stagger-2,
+  #about.about-visible .about-stagger-3,
+  #about.about-visible .about-stagger-4 {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes spinSlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  .animate-spin-slow {
+    animation: spinSlow 12s linear infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounceSlow 3s ease-in-out infinite;
+  }
 </style>

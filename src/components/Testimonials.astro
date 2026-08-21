@@ -66,7 +66,7 @@ const reviews = [
   <div class="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col justify-between flex-1 h-full">
     
     <!-- TOP HEADER -->
-    <div class="shrink-0 space-y-2 mb-4">
+    <div class="shrink-0 space-y-2 mb-4 test-reveal test-fade-down">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[#e8ded0] pb-3">
         <div>
           <!-- Eyebrow Tag -->
@@ -113,8 +113,11 @@ const reviews = [
 
     <!-- CLEAN & FRIENDLY SMALLER CARDS GRID -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-[1300px] mx-auto flex-1 min-h-0 items-center my-auto py-1">
-      {reviews.map((item) => (
-        <div class="group bg-white rounded-xl p-3.5 sm:p-4 border border-[#e8ded0] shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_22px_rgba(212,163,115,0.16)] hover:border-[#D4A373] transition-all duration-300 flex flex-col justify-between h-full min-h-[180px] max-h-[220px] relative overflow-hidden">
+      {reviews.map((item, index) => (
+        <div 
+          style={`--stagger-index: ${index};`}
+          class="test-reveal test-card-stagger group bg-white rounded-xl p-3.5 sm:p-4 border border-[#e8ded0] shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_22px_rgba(212,163,115,0.16)] hover:border-[#D4A373] transition-all duration-300 flex flex-col justify-between h-full min-h-[180px] max-h-[220px] relative overflow-hidden"
+        >
           
           <!-- Top Row: 5 Stars & Stay Tag -->
           <div class="space-y-2">
@@ -165,7 +168,7 @@ const reviews = [
     </div>
 
     <!-- BOTTOM ACTION BAR -->
-    <div class="shrink-0 pt-3 border-t border-[#e8ded0] flex items-center justify-between gap-4">
+    <div class="shrink-0 pt-3 border-t border-[#e8ded0] flex items-center justify-between gap-4 test-reveal test-fade-up">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
         <span class="text-xs text-[#554960] font-semibold uppercase tracking-wider">
@@ -177,7 +180,7 @@ const reviews = [
         href="https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suites+By+Addon"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 bg-[#1c0c30] hover:bg-[#b8860b] text-[#FAF7F3] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider py-2.5 px-5 rounded-full transition-all duration-300 shadow-xs cursor-pointer"
+        class="inline-flex items-center gap-2 bg-[#1c0c30] hover:bg-[#b8860b] text-[#FAF7F3] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider py-2.5 px-5 rounded-full transition-all duration-300 shadow-xs cursor-pointer transform hover:-translate-y-0.5"
       >
         <span>WRITE A GOOGLE REVIEW</span>
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -190,6 +193,47 @@ const reviews = [
 
 </section>
 
+<script is:inline>
+  (function() {
+    var section = document.getElementById('reviews');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('test-visible');
+        } else {
+          entry.target.classList.remove('test-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
+  })();
+</script>
+
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+  .test-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .test-fade-down { transform: translateY(-30px); }
+  .test-card-stagger { transform: translateY(45px); }
+  .test-fade-up { transform: translateY(30px); transition-delay: 0.5s; }
+
+  #reviews.test-visible .test-fade-down,
+  #reviews.test-visible .test-fade-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #reviews.test-visible .test-card-stagger {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--stagger-index, 0) * 0.14s + 0.15s);
+  }
 </style>

@@ -72,36 +72,36 @@ const promises = [
 <Layout title="Dining & Malabar Cuisine | Delta Suites Beypore">
   <Header isSolid={true} />
 
-  <main class="bg-[#fcf9f4] text-[#1c0c30]">
+  <main id="dining-page" class="bg-[#fcf9f4] text-[#1c0c30] overflow-hidden">
     
-    <!-- 1. GRAND HERO HEADER SECTION -->
-    <section class="relative bg-[#120524] text-white pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden border-b border-white/10">
+    <!-- 1. GRAND HERO HEADER SECTION (LIGHT THEME MATCHING ROOMS PAGE) -->
+    <section class="relative bg-[#FAF7F3] text-[#1c0c30] pt-24 pb-16 sm:pt-32 sm:pb-24 overflow-hidden border-b border-[#e8ded0]">
       
-      <!-- Ambient Glow Effects -->
-      <div class="absolute top-1/3 left-1/4 w-[32rem] h-[32rem] bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
+      <!-- Subtle Ambient Glow -->
+      <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-[#D4A373]/10 rounded-full filter blur-3xl pointer-events-none"></div>
 
       <div class="max-w-[1340px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           <!-- Left Column Text -->
-          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="lg:col-span-7 space-y-5 text-center lg:text-left dining-page-reveal dining-page-fade-left">
             
             <!-- Category Tag -->
-            <div class="inline-flex items-center gap-3 bg-white/5 border border-[#D4A373]/30 backdrop-blur-md px-4 py-1.5 rounded-full">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#D4A373]"></span>
-              <span class="text-[#D4A373] text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">
+            <div class="inline-flex items-center gap-2.5 bg-[#FAF5ED] border border-[#e8ded0] px-4 py-1.5 rounded-full shadow-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#b8860b]"></span>
+              <span class="text-[#b8860b] text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">
                 FINE DINING & MALABAR GASTRONOMY
               </span>
             </div>
 
             <!-- Title -->
-            <h1 class="text-4xl sm:text-6xl font-serif font-bold tracking-tight text-white leading-tight" style="font-family: 'Cormorant Garamond', serif;">
+            <h1 class="text-4xl sm:text-6xl font-serif font-bold tracking-tight text-[#1c0c30] leading-tight" style="font-family: 'Cormorant Garamond', serif;">
               Savor the Culinary<br />
-              <span class="text-[#D4A373]">Heritage of Beypore</span>
+              <span class="text-[#b8860b]">Heritage of Beypore</span>
             </h1>
 
-            <p class="text-white/80 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p class="text-[#554960] text-sm sm:text-base font-normal leading-relaxed max-w-xl mx-auto lg:mx-0">
               Delta Suites brings you a refined dining experience celebrating Kozhikode's legendary food culture. From wholesome buffet breakfasts to authentic seafood curries, every meal is prepared with warmth and precision.
             </p>
 
@@ -111,7 +111,7 @@ const promises = [
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full sm:w-auto bg-[#b8860b] hover:bg-[#D4A373] text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-8 rounded-full transition-all duration-300 shadow-md inline-flex items-center justify-center gap-2 cursor-pointer"
+                class="w-full sm:w-auto bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5"
               >
                 <span>BOOK YOUR STAY & DINING</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -121,7 +121,7 @@ const promises = [
 
               <a 
                 href="#dining-highlights"
-                class="w-full sm:w-auto bg-white/5 hover:bg-white text-white hover:text-[#120524] border border-white/20 font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-7 rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2 cursor-pointer"
+                class="w-full sm:w-auto bg-white hover:bg-[#1c0c30] text-[#1c0c30] hover:text-white border border-[#1c0c30] font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-7 rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5 shadow-xs"
               >
                 <span>EXPLORE OFFERINGS</span>
               </a>
@@ -130,17 +130,17 @@ const promises = [
           </div>
 
           <!-- Right Column Hero Image Frame -->
-          <div class="lg:col-span-5 relative">
-            <div class="relative w-full aspect-[4/3] rounded-[32px] overflow-hidden border border-white/20 shadow-2xl bg-white/5 group">
+          <div class="lg:col-span-5 relative dining-page-reveal dining-page-fade-right">
+            <div class="relative w-full aspect-[4/3] rounded-[28px] overflow-hidden border border-[#e8ded0] shadow-xl bg-white group">
               <Image 
                 src={restaurantImg} 
                 alt="Delta Suites Restaurant Dining" 
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
                 loading="eager" 
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#120524]/80 via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1c0c30]/40 via-transparent to-transparent"></div>
               
-              <div class="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-white/40 shadow-lg text-[#1c0c30]">
+              <div class="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-[#e8ded0] shadow-md text-[#1c0c30]">
                 <span class="text-[10px] font-bold text-[#b8860b] uppercase tracking-wider block">DELTA RESTAURANT</span>
                 <span class="text-sm font-serif font-bold block" style="font-family: 'Cormorant Garamond', serif;">
                   Open Daily for Breakfast, Lunch & Dinner
@@ -159,7 +159,7 @@ const promises = [
       <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
         
         <!-- Section Sub-header -->
-        <div class="text-center max-w-2xl mx-auto space-y-2">
+        <div class="text-center max-w-2xl mx-auto space-y-2 dining-page-reveal dining-page-fade-down">
           <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase block">
             OUR CULINARY OFFERINGS
           </span>
@@ -174,7 +174,7 @@ const promises = [
         </div>
 
         {diningExperiences.map((exp, index) => (
-          <div class={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
+          <div class={`dining-page-item-stagger grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
             index % 2 === 1 ? 'lg:flex-row-reverse' : ''
           }`}>
             
@@ -246,7 +246,7 @@ const promises = [
     <section class="py-16 bg-[#FAF5ED] border-t border-b border-[#e8ded0]">
       <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
-        <div class="text-center max-w-xl mx-auto space-y-1">
+        <div class="text-center max-w-xl mx-auto space-y-1 dining-page-reveal dining-page-fade-down">
           <span class="text-[10px] font-bold text-[#b8860b] uppercase tracking-[0.2em]">OUR COMMITMENT TO GUESTS</span>
           <h3 class="text-2xl sm:text-4xl font-serif font-bold text-[#1c0c30]" style="font-family: 'Cormorant Garamond', serif;">
             Why Dine With Us
@@ -254,8 +254,11 @@ const promises = [
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
-          {promises.map(item => (
-            <div class="bg-white p-6 rounded-2xl border border-[#e8ded0] shadow-xs space-y-2 text-center">
+          {promises.map((item, index) => (
+            <div 
+              style={`--stagger-index: ${index};`}
+              class="dining-page-item-stagger bg-white p-6 rounded-2xl border border-[#e8ded0] shadow-xs hover:shadow-lg transition-all duration-300 space-y-2 text-center"
+            >
               <div class="w-10 h-10 rounded-full bg-[#1c0c30] text-[#D4A373] flex items-center justify-center mx-auto text-sm font-bold shadow-xs">
                 ✦
               </div>
@@ -278,6 +281,70 @@ const promises = [
   <Footer />
 </Layout>
 
+<script is:inline>
+  (function() {
+    var mainEl = document.getElementById('dining-page');
+    if (!mainEl) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('dining-page-visible');
+        } else {
+          entry.target.classList.remove('dining-page-visible');
+        }
+      });
+    }, { threshold: 0.05 });
+
+    observer.observe(mainEl);
+
+    // Observe individual item blocks for smooth scroll entrance
+    var items = document.querySelectorAll('.dining-page-item-stagger');
+    var itemObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('item-in-view');
+        } else {
+          entry.target.classList.remove('item-in-view');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(function(item) {
+      itemObserver.observe(item);
+    });
+  })();
+</script>
+
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .dining-page-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dining-page-fade-left { transform: translateX(-40px); }
+  .dining-page-fade-right { transform: translateX(40px); }
+  .dining-page-fade-down { transform: translateY(-30px); }
+
+  .dining-page-item-stagger {
+    opacity: 0;
+    transform: translateY(45px);
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #dining-page.dining-page-visible .dining-page-fade-left,
+  #dining-page.dining-page-visible .dining-page-fade-right,
+  #dining-page.dining-page-visible .dining-page-fade-down {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  .dining-page-item-stagger.item-in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>

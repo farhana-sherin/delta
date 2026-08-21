@@ -75,7 +75,7 @@ const services = [
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
       
       <!-- LEFT COLUMN: Clean Header Block without Image (4 cols out of 12) -->
-      <div class="lg:col-span-4 flex flex-col justify-center">
+      <div class="lg:col-span-4 flex flex-col justify-center fac-reveal fac-fade-left">
         
         <!-- Eyebrow Tag & Ornament -->
         <div class="flex items-center gap-2 mb-3">
@@ -110,7 +110,7 @@ const services = [
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-7 rounded-full transition-all duration-300 shadow-md hover:shadow-xl group cursor-pointer"
+            class="inline-flex items-center gap-2.5 bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 px-7 rounded-full transition-all duration-300 shadow-md hover:shadow-xl group cursor-pointer transform hover:-translate-y-0.5"
           >
             <span>RESERVE YOUR STAY</span>
             <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
@@ -123,8 +123,11 @@ const services = [
 
       <!-- RIGHT COLUMN: 2x3 Grid of 6 Vertical Cards (8 cols out of 12) -->
       <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6">
-        {services.map((item) => (
-          <div class="group bg-white rounded-2xl p-6 border border-[#e8ded0]/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center relative overflow-hidden cursor-pointer min-h-[220px] justify-center">
+        {services.map((item, index) => (
+          <div 
+            style={`--stagger-index: ${index};`}
+            class="fac-reveal fac-card-stagger group bg-white rounded-2xl p-6 border border-[#e8ded0]/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center relative overflow-hidden cursor-pointer min-h-[220px] justify-center"
+          >
             
             <!-- Icon Stack with Off-center Accent Glow Circle -->
             <div class="relative mb-4 flex items-center justify-center">
@@ -156,3 +159,46 @@ const services = [
   </div>
 
 </section>
+
+<script is:inline>
+  (function() {
+    var section = document.getElementById('facilities');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fac-visible');
+        } else {
+          entry.target.classList.remove('fac-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(section);
+  })();
+</script>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .fac-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fac-fade-left { transform: translateX(-40px); }
+  .fac-card-stagger { transform: translateY(45px); }
+
+  #facilities.fac-visible .fac-fade-left {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  #facilities.fac-visible .fac-card-stagger {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--stagger-index, 0) * 0.14s + 0.15s);
+  }
+</style>

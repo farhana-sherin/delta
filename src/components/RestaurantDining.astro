@@ -62,7 +62,7 @@ const diningServices = [
   <div class="max-w-[1340px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Title & Subheading -->
-    <div class="text-center space-y-3 mb-14 sm:mb-18">
+    <div class="text-center space-y-3 mb-14 sm:mb-18 dining-reveal dining-fade-down">
       <span class="text-[#b8860b] text-xs font-bold tracking-[0.25em] uppercase block">
         CULINARY SERVICES
       </span>
@@ -73,16 +73,19 @@ const diningServices = [
 
       <!-- Subtle Accent Divider Line -->
       <div class="flex items-center justify-center gap-2.5 pt-1">
-        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
-        <div class="w-1.5 h-1.5 rotate-45 bg-[#D4A373]"></div>
-        <div class="w-10 h-[1px] bg-[#D4A373]"></div>
+        <div class="w-10 h-[1px] bg-gradient-to-r from-transparent via-[#D4A373] to-[#D4A373]"></div>
+        <div class="w-1.5 h-1.5 rotate-45 bg-[#D4A373] shadow-[0_0_8px_rgba(212,163,115,0.8)]"></div>
+        <div class="w-10 h-[1px] bg-gradient-to-l from-transparent via-[#D4A373] to-[#D4A373]"></div>
       </div>
     </div>
 
     <!-- MINIMALIST 3x2 CARD GRID -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 items-stretch mb-14 sm:mb-18">
-      {diningServices.map((item) => (
-        <div class="group bg-white rounded-[28px] p-6 sm:p-7 border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(212,163,115,0.15)] hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden cursor-pointer">
+      {diningServices.map((item, index) => (
+        <div 
+          style={`--stagger-index: ${index};`}
+          class="dining-reveal dining-card-stagger group bg-white rounded-[28px] p-6 sm:p-7 border border-[#e8ded0] shadow-[0_4px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(212,163,115,0.15)] hover:border-[#D4A373] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden cursor-pointer"
+        >
           
           <div>
             <!-- Clean Card Image -->
@@ -90,7 +93,7 @@ const diningServices = [
               <Image 
                 src={item.image} 
                 alt={item.title} 
-                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out" 
+                class="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-700 ease-out" 
                 loading="lazy" 
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#1c0c30]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -113,12 +116,12 @@ const diningServices = [
     </div>
 
     <!-- Centered Minimal CTA Button: BOOK YOUR STAY -->
-    <div class="flex justify-center">
+    <div class="flex justify-center dining-reveal dining-card-stagger" style="--stagger-index: 6;">
       <a 
         href={BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="group bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-4 px-10 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-3 cursor-pointer"
+        class="group bg-[#1c0c30] hover:bg-[#b8860b] text-white font-bold text-xs uppercase tracking-[0.2em] py-4 px-10 rounded-full transition-all duration-300 shadow-md hover:shadow-xl inline-flex items-center gap-3 cursor-pointer transform hover:-translate-y-0.5"
       >
         <span>BOOK YOUR STAY</span>
         <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -130,6 +133,66 @@ const diningServices = [
   </div>
 </section>
 
+<script is:inline>
+  (function() {
+    var section = document.getElementById('restaurant-dining');
+    if (!section) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('dining-visible');
+        } else {
+          entry.target.classList.remove('dining-visible');
+        }
+      });
+    }, { threshold: 0.08 });
+
+    observer.observe(section);
+
+    var cards = section.querySelectorAll('.dining-card-stagger');
+    var cardObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('dining-card-in-view');
+        } else {
+          entry.target.classList.remove('dining-card-in-view');
+        }
+      });
+    }, { threshold: 0.08 });
+
+    cards.forEach(function(card) {
+      cardObserver.observe(card);
+    });
+  })();
+</script>
+
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant Garamond:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+  .dining-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dining-fade-down {
+    transform: translateY(-30px);
+  }
+
+  .dining-card-stagger {
+    transform: translateY(45px);
+  }
+
+  #restaurant-dining.dining-visible .dining-fade-down {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #restaurant-dining.dining-visible .dining-card-stagger,
+  .dining-card-stagger.dining-card-in-view {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--stagger-index, 0) * 0.14s + 0.15s);
+  }
 </style>

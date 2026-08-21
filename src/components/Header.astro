@@ -9,9 +9,9 @@ interface Props {
 const { isSolid = false } = Astro.props;
 ---
 
-<header id="main-header" class="fixed top-0 inset-x-0 z-50 bg-[#120524]/95 backdrop-blur-md border-b border-white/10 shadow-xl text-white font-sans text-xs tracking-wider transition-all duration-300">
+<header id="main-header" class="fixed top-0 inset-x-0 z-50 bg-[#120524]/95 backdrop-blur-md border-b border-white/10 shadow-xl text-white font-sans text-xs tracking-wider transition-all duration-500 ease-in-out">
   <!-- Top Bar (Desktop) -->
-  <div class={`hidden md:flex justify-between items-center py-2 px-4 md:px-8 xl:px-16 border-b border-white/10 ${isSolid ? 'bg-[#120524]' : 'bg-[#120524]/80'} text-[10px] text-white/70`}>
+  <div id="header-top-bar" class={`hidden md:flex justify-between items-center py-2 px-4 md:px-8 xl:px-16 border-b border-white/10 ${isSolid ? 'bg-[#120524]' : 'bg-[#120524]/80'} text-[10px] text-white/70 transition-all duration-500 ease-in-out overflow-hidden max-h-12 opacity-100`}>
     <div class="flex items-center gap-2">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
       <a href="https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suites+By+Addon" target="_blank" rel="noopener noreferrer" class="hover:text-[#D4A373] transition-colors">
@@ -36,8 +36,8 @@ const { isSolid = false } = Astro.props;
     <div class="max-w-[1400px] mx-auto flex items-center justify-between pointer-events-auto">
       
       <!-- Logo left side -->
-      <a href="/" class="flex flex-col items-start justify-center">
-        <Image src={logoImage} alt="Delta Suites Logo" class="h-9 md:h-11 w-auto object-contain" />
+      <a href="/" class="flex flex-col items-start justify-center group">
+        <Image src={logoImage} alt="Delta Suites Logo" class="h-9 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
       </a>
 
       <!-- Desktop Nav Center -->
@@ -46,17 +46,13 @@ const { isSolid = false } = Astro.props;
         <a href="/#about" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">ABOUT US</a>
         <a href="/rooms" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">ROOMS</a>
         <a href="/dining" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">DINING</a>
-        <a href="/#experiences" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">EXPERIENCES</a>
-        <a href="/#facilities" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">FACILITIES</a>
-        <a href="/#gallery" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">GALLERY</a>
         <a href="/faq" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">FAQ</a>
-        <a href="https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suites+By+Addon" target="_blank" rel="noopener noreferrer" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">LOCATION</a>
         <a href="/contact" class="hover:text-[#D4A373] transition-colors relative after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-[#D4A373] hover:after:w-4 after:transition-all after:duration-300">CONTACT</a>
       </nav>
 
       <!-- Desktop CTA & Mobile Hamburger Button -->
       <div class="flex items-center gap-3">
-        <a href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center justify-center border border-[#D4A373] text-[#D4A373] px-6 py-2 hover:bg-[#D4A373] hover:text-black transition-colors duration-300 font-semibold tracking-widest text-[11px] rounded-full shadow-sm">
+        <a href="https://mobilebe.stayflexi.com/39879/?checkin=17-08-2026&num_nights=1&num_guests=2&source=google&hotel_id=39879" target="_blank" rel="noopener noreferrer" class="hidden xl:inline-flex items-center justify-center border border-[#D4A373] text-[#D4A373] px-6 py-2 hover:bg-[#D4A373] hover:text-black transition-all duration-300 font-semibold tracking-widest text-[11px] rounded-full shadow-sm hover:shadow-[0_0_20px_rgba(212,163,115,0.4)]">
           BOOK NOW
         </a>
 
@@ -107,11 +103,7 @@ const { isSolid = false } = Astro.props;
     <a href="/#about" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">ABOUT US</a>
     <a href="/rooms" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">ROOMS & SUITES</a>
     <a href="/dining" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">DINING & RESTAURANT</a>
-    <a href="/#experiences" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">EXPERIENCES</a>
-    <a href="/#facilities" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">SERVICES & FACILITIES</a>
-    <a href="/#gallery" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">GALLERY</a>
     <a href="/faq" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">FAQ</a>
-    <a href="https://www.google.com/search?kgmid=/g/11zd9dks8t&q=Delta+Suites+By+Addon" target="_blank" rel="noopener noreferrer" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">LOCATION</a>
     <a href="/contact" class="mobile-nav-link text-xs tracking-[0.2em] font-medium uppercase text-white/80 hover:text-[#D4A373] transition-colors py-1 text-center">CONTACT</a>
   </nav>
 
@@ -127,6 +119,18 @@ const { isSolid = false } = Astro.props;
     </a>
   </div>
 </div>
+
+<!-- Scroll To Top Button -->
+<button 
+  id="scroll-to-top-btn" 
+  type="button" 
+  aria-label="Scroll to top of page" 
+  class="fixed bottom-6 left-6 z-40 h-10 w-10 md:h-11 md:w-11 rounded-full bg-[#120524]/90 backdrop-blur-md text-[#D4A373] border border-[#D4A373]/40 shadow-2xl flex items-center justify-center opacity-0 pointer-events-none translate-y-4 transition-all duration-300 hover:bg-[#D4A373] hover:text-black hover:border-[#D4A373] hover:shadow-[0_0_20px_rgba(212,163,115,0.5)] cursor-pointer group"
+>
+  <svg class="w-4 h-4 md:w-5 md:h-5 transform group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+  </svg>
+</button>
 
 <!-- Minimalist Floating Quick Contact Widget (Bottom Right Corner) -->
 <div class="xl:hidden">
@@ -186,6 +190,65 @@ const { isSolid = false } = Astro.props;
 
 <script is:inline>
   (function() {
+    var header = document.getElementById('main-header');
+    var topBar = document.getElementById('header-top-bar');
+    var navBar = document.getElementById('header-nav-bar');
+    var scrollTopBtn = document.getElementById('scroll-to-top-btn');
+
+    // Header Scroll Animation & Scroll-to-Top Button Visibility
+    function handleScroll() {
+      var scrollY = window.scrollY || window.pageYOffset;
+
+      // Header compaction on scroll down, expansion on scroll back to top
+      if (scrollY > 50) {
+        if (header) {
+          header.classList.add('bg-[#080210]/98', 'shadow-2xl', 'border-[#D4A373]/30');
+          header.classList.remove('bg-[#120524]/95', 'border-white/10');
+        }
+        if (topBar) {
+          topBar.style.maxHeight = '0px';
+          topBar.style.opacity = '0';
+          topBar.style.paddingTop = '0px';
+          topBar.style.paddingBottom = '0px';
+          topBar.style.borderBottomWidth = '0px';
+        }
+        if (navBar) {
+          navBar.classList.remove('py-3', 'md:py-3.5');
+          navBar.classList.add('py-2', 'md:py-2.5');
+        }
+      } else {
+        if (header) {
+          header.classList.remove('bg-[#080210]/98', 'shadow-2xl', 'border-[#D4A373]/30');
+          header.classList.add('bg-[#120524]/95', 'border-white/10');
+        }
+        if (topBar) {
+          topBar.style.maxHeight = '50px';
+          topBar.style.opacity = '1';
+          topBar.style.paddingTop = '';
+          topBar.style.paddingBottom = '';
+          topBar.style.borderBottomWidth = '';
+        }
+        if (navBar) {
+          navBar.classList.remove('py-2', 'md:py-2.5');
+          navBar.classList.add('py-3', 'md:py-3.5');
+        }
+      }
+
+      // Scroll to Top button reveal
+      if (scrollTopBtn) {
+        if (scrollY > 300) {
+          scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+          scrollTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        } else {
+          scrollTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+          scrollTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
     // Mobile Navigation Drawer Toggle
     function toggleDrawer(open) {
       var drawer = document.getElementById('mobile-drawer');
@@ -223,6 +286,13 @@ const { isSolid = false } = Astro.props;
     }
 
     document.addEventListener('click', function(e) {
+      // Scroll To Top Click
+      var topBtn = e.target.closest('#scroll-to-top-btn');
+      if (topBtn) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
       // Mobile Drawer Clicks
       var menuBtn = e.target.closest('#mobile-menu-btn');
       if (menuBtn) {
